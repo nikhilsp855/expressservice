@@ -41,14 +41,14 @@ export class ServiceFooter extends React.Component {
                 </div>
             </div>
 
-            <ul>
+            <ul className='spul'>
 
-                <li className="fa fa-facebook"><a href="#" className="fa"></a></li>
-                <li><a href="#" className="fa fa-twitter"></a></li>
-                <li><a href="#" className="fa fa-google"></a></li>
-                <li><a href="#" className="fa fa-linkedin"></a></li>
-                <li><a href="#" className="fa fa-youtube"></a></li>
-                <li><a href="#" className="fa fa-instagram"></a></li>
+                <li className="fa fa-facebook spli"><a href="#" className="fa"></a></li>
+                <li><a href="#" className="fa fa-twitter spli"></a></li>
+                <li><a href="#" className="fa fa-google spli"></a></li>
+                <li><a href="#" className="fa fa-linkedin spli"></a></li>
+                <li><a href="#" className="fa fa-youtube spli"></a></li>
+                <li><a href="#" className="fa fa-instagram spli"></a></li>
             </ul>
         </div>
     }

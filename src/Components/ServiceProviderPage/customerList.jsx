@@ -31,21 +31,21 @@ export class CustomerList extends React.Component {
         
         for(let i=this.state.start;i<this.state.customers.length && i<this.state.start+5;i++) {
         
-            customerList2.push(<div class="col-md-12 container-fluid customer" key={this.state.customers[i].id}>
+            customerList2.push(<div className="col-md-12 container-fluid customer" key={this.state.customers[i].id}>
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                         <img src={this.state.customers[i].pic} alt="customer pic" class='customerImage'/>
                     </div>
-                    <div class="col-md-7">
-                        <h4>{this.state.customers[i].name}</h4>
+                    <div className="col-md-7">
+                        <h4 className='sph4'>{this.state.customers[i].name}</h4>
                         <p>{this.state.customers[i].address}</p>
                         <p>{this.state.customers[i].date}</p>
                     </div>
-                    <div class="col-md-1">
+                    <div className="col-md-1">
 
-                        <div class={this.state.customers[i].status}></div>
+                        <div className={this.state.customers[i].status}></div>
                         <br/>
                         <br/>
                         <br/>

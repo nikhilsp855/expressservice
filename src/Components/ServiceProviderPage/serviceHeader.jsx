@@ -9,8 +9,8 @@ export class ServiceHeader extends React.Component {
             <div className="jumbotron text-center serviceHeader">
             
                 <h2 className='companyName'>Express Service</h2>
-                <h1><b>Choudhary Furnitures</b></h1>
-		        <h3>We build, We decorate, We innovate</h3>
+                <h1 className='sph1'><b>Choudhary Furnitures</b></h1>
+		        <h3 className='sph3'>We build, We decorate, We innovate</h3>
 
                 <img src={ manish } alt="choudhary image" className='spImage'/>
 	        </div>
