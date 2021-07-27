@@ -1,0 +1,181 @@
+h1 {
+
+    color:white;
+    font-size:60px;
+    height:100px;
+    margin: 50px;
+}
+
+h3{
+
+    color:white
+}
+
+h4 {
+
+ margin : 30px;
+    
+}
+
+.serviceHeader {
+
+    margin-bottom:0;
+    background-color:black;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('./images/carpenter.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:550px
+}
+
+.backgroundFooter {
+    
+    background-color:black
+}
+
+.companyName {
+
+    color: white;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.es{
+
+    padding-left: 45px;
+    height : 30px;
+}
+
+.spImage {
+
+    height : 200px;
+    width : 200px;
+    border-radius: 50%;
+}
+
+
+.customer {
+
+    padding: 5px;
+}
+
+.customer:hover {
+
+    box-shadow: 10px 10px 10px grey;
+}
+
+.customerImage {
+
+    height : 150px;
+    width : 150px;
+    border-radius: 50%;
+    float : left;
+    
+}
+
+.green {
+
+    background-color: green;
+    height : 60px;
+    width : 60px;
+    border-radius: 50%;
+    float: right;
+}
+
+.yellow {
+
+    background-color: yellow;
+    height : 60px;
+    width : 60px;
+    border-radius: 50%;
+    float: right;
+}
+
+.red {
+
+    background-color: red;
+    height : 60px;
+    width : 60px;
+    border-radius: 50%;
+    float: right;
+}
+
+.greyBlackBackground {
+
+    background:  linear-gradient( rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8) );
+}
+
+.overEle {
+
+    font-size: larger;
+    font-weight: bold;
+    border: 2px solid green;
+    padding: 25px 25px;
+}
+
+.overEle:hover {
+
+    text-shadow: 10px 10px 10px grey;
+}
+
+.footerEle {
+
+    font-size: larger;
+    font-weight: bold;
+    padding: 10px 10px;
+    color : white;
+}
+
+.footerh2 {
+
+    color:white;
+}
+
+
+.fa {
+
+    color : green;
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+
+  li{
+
+    float: left;
+    list-style-type: none;
+  }
+
+  ul {
+
+    float:right;
+  }
+  
+  .margintop30 {
+
+    margin-top: 30px;
+  }
+
+  .PrevButton {
+
+    float:left;
+    background:  linear-gradient( rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8) );
+    height : 50px;
+    width: 100px;
+  }
+
+  .NextButton {
+
+    float : right;
+    background:  linear-gradient( rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.8) );
+    height : 50px;
+    width: 100px;
+  }
+  
