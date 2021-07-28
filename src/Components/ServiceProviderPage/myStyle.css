@@ -56,11 +56,13 @@
 .customer {
 
     padding: 5px;
+    transition-duration: 0.5s;
 }
 
 .customer:hover {
 
     box-shadow: 10px 10px 10px grey;
+    transform: scale(1.05);
 }
 
 .customerImage {
@@ -179,3 +181,9 @@
     width: 100px;
   }
   
+  .stickyTop {
+
+    position :-webkit-sticky;
+    position: sticky;
+    top : 0px;
+  }
