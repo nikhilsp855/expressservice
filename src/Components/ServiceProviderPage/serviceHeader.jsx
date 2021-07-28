@@ -15,30 +15,30 @@ export class ServiceHeader extends React.Component {
                 <img src={ manish } alt="choudhary image" className='spImage'/>
 	        </div>
 
-            <div>
-            <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  		<a className="navbar-brand" href="#">Home</a>
-  		<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    			<span className="navbar-toggler-icon"></span>
-  		</button>
-  		<div className="collapse navbar-collapse" id="collapsibleNavbar">
-    			<ul className="navbar-nav">
-      				<li className="nav-item">
-        				<a className="nav-link" href="#">Portfolio</a>
-      				</li>
-      				<li className="nav-item">
-        				<a className="nav-link" href="#">Services</a>
-      				</li>
-      				<li className="nav-item">
-        				<a className="nav-link" href="#">About Us</a>
-      				</li>    
-      				<li className="nav-item">
-        				<a className="nav-link" href="#">Contact Us</a>
-      				</li>    
-    			</ul>
-  		</div>  
-	</nav>
-
+            <div className='stickyTop'>
+            	
+				<nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  					<a className="navbar-brand" href="#">Home</a>
+  					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    					<span className="navbar-toggler-icon"></span>
+  					</button>
+  					<div className="collapse navbar-collapse" id="collapsibleNavbar">
+    					<ul className="navbar-nav">
+      						<li className="nav-item">
+        						<a className="nav-link" href="#">Portfolio</a>
+      						</li>
+      						<li className="nav-item">
+        						<a className="nav-link" href="#">Services</a>
+      						</li>
+      						<li className="nav-item">
+        						<a className="nav-link" href="#">About Us</a>
+      						</li>    
+      						<li className="nav-item">
+        						<a className="nav-link" href="#">Contact Us</a>
+      						</li>    
+    					</ul>
+  					</div>  
+				</nav>
 
             </div>
 
