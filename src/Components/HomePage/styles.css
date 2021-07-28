@@ -1,10 +1,10 @@
 .hmbody{
     margin:0;
     padding: 0;
-    background-image: url("homeservice.jpg");
+    background-image: url("background.jpg");
     /*background-position: center;*/
     background-repeat:no-repeat;
-    background-size: 100% 80%;
+    background-size: 100% 65%;
 }
 .logo{
   float:left;
@@ -24,7 +24,7 @@
     margin-right: 10px;
   }
   
-  li:last-child {
+  .hmli:last-child {
     border-right:1px solid #bbb;
   }
 
@@ -33,7 +33,7 @@
       margin-top: 5px;
   }
   
-  li a {
+  .hmli a {
     display: block;
     color: white;
     text-align: center;
@@ -41,125 +41,82 @@
     text-decoration: none;
   }
   
-  li a:hover{
+  .hmli a:hover{
     background-color: #111;
   }
-  .card {
-    /*display: inline-block;*/
-    background-color: black;
-    margin-left: 25px;
+  .card_s {
+    display: inline-block;
+    background-color:white;
+    margin-left: 35px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 150px;
+    width: 160px;
     height: 185px;
     margin-top: 10px;
-    float: left;
+   
   }
-  .img1{
-    position: relative;
+  .img_1{
     margin-top: 10px;
-    margin-left: auto;
+    margin-left: 25px;
     margin-right: auto;
     width: 100px;
     height: 100px;
   }
-  .card:hover {
+
+  .card_s:hover {
     cursor: pointer;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color: black;
     transform: scale(1.1);
-
-
   }
   
-  .container {
-      color: white;
-    padding: 3px 16px;
+  .containers_text {
+    text-decoration:none;
+    color:black;
+    margin-top: 10px;
+    padding: 3px;
     text-align: center;
   }
-  .card1{
-    padding: 30px;
-      background-color: black;
-      margin-top: 550px;
+  .texts{
+    text-decoration: none;
+  }
+  .containers_text:hover {
+    color:white;
+    margin-top: 10px;
+    padding: 3px;
+    text-align: center;
+  }
+  .cards1{
+     padding: 50px;
+      background-color:ghostwhite;
+      margin-top: 500px;
   }
   .search1{
-      align-items: center;
-      margin-top: 400px;
+      display: flex;
+      justify-content: center;
+      margin-top: 450px;
   }
   .search2{
-      padding: 20px;
-      width: 500px;
+    border-radius: 25px;
+  border: 5px solid black;
+  background-color: transparent;
+        padding: 20px;
+      width: 800px;
+  }
+  .search2:hover{
+    background-color: white;
   }
   .btn1:hover{
     cursor: pointer;
-  }
-  .btn1{
-      padding: 20px;
-  }
-  footer {
-     
-    text-align: center;
-    padding: 3px;
     background-color: black;
     color: white;
   }
-  .foot{
+  .btn1{
+    border-radius: 25px;
+     border: 5px solid black;
       padding: 20px;
-      margin-top: 2px;
-      column-count: 4;
+      background-color: transparent;
   }
-  .footer-dark .item.text {
-    margin-bottom:36px;
-  }
-  
-  
-  .footer-dark .item.text p {
-    opacity:0.6;
-    margin-bottom:0;
-  }
-  
-  .footer-dark .item.social {
-    text-align:center;
-  }
-  
-  .footer-dark .item.social > a {
-    font-size:20px;
-    width:36px;
-    height:36px;
-    line-height:36px;
-    display:inline-block;
-    text-align:center;
-    border-radius:50%;
-    box-shadow:0 0 0 1px rgba(255,255,255,0.4);
-    margin:0 8px;
-    color:#fff;
-    opacity:0.75;
-  }
-  .fa {
-    padding: 11px;
-    font-size: 15px;
-    width: 10px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-  }
-  
-  
-  .fa:hover {
-    opacity: 0.7;
-  }
-  
-  .fa-facebook {
-    background: transparent;
-    color: white;
-  }
-  
-  .footer-dark .item.social > a:hover {
-    opacity:0.9;
-  }
-  .footer-dark .copyright {
-    text-align:center;
-    padding-top:24px;
-    opacity:0.3;
-    font-size:13px;
-    margin-bottom:0;
+  .foot{
+    margin-top: 10px;
   }

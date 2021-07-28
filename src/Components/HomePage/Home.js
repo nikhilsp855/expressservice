@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import { Link} from 'react-router-dom';
 import logo from './logo.png';
 import grooming from './grooming.jpg';
 import appliance from './appliance.jpeg';
@@ -9,6 +10,7 @@ import cleaning from './images (1).jpg';
 import painter from './painting-contractors.jpg';
 import carpenter from './images.jpg';
 import electrician from './istockphoto-511990814-612x612.jpg';
+import Footer from '../Page2/Footer';
 
 class Home extends React.Component{
   render(){
@@ -31,81 +33,67 @@ class Home extends React.Component{
           <button className="btn1">Search</button>
         </div>
           
-        <div className="card1">
-          
-          <div className="card">
-            
-            <img className="img1" src={grooming} alt="Avatar"/>
-            <div className="container">
+        <div className="cards1">
+          <div className="card_s">
+            <img className="img_1" src={grooming} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Grooming</b></h4> 
             </div>
           </div>
           
-          <div className="card">
-            <img className="img1" src={appliance} alt="Avatar"/>
-            <div class="container">
+          <div className="card_s">
+            <img className="img_1" src={appliance} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Repair</b></h4> 
             </div>
           </div>
           
-          <div className="card">
-            <img className="img1" src={plumber} alt="Avatar"/>
-            <div className="container">
-              <h4><b>Plumber</b></h4> 
-            </div>
-          </div>
+          <Link to="/service"><div className="card_s">
+            <img className="img_1" src={plumber} alt="Avatar"/>
+             <div className="containers_text">
+            <h4 className="texts"><b>Plumber</b></h4>
+            </div> 
+          </div></Link>
           
-          <div className="card">
-            <img className="img1" src={painter} alt="Avatar"/>
-            <div className="container">
+          <div className="card_s">
+            <img className="img_1" src={painter} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Painters</b></h4> 
             </div>
           </div>
           
-          <div className="card">
-            <img className="img1" src={pest} alt="Avatar"/>
-            <div className="container">
+          <div className="card_s">
+            <img className="img_1" src={pest} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Pest Control</b></h4> 
             </div>
           </div>
           
-          <div className="card">
-            <img className="img1" src={cleaning} alt="Avatar"/>
-            <div className="container">
+          <div className="card_s">
+            <img className="img_1" src={cleaning} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Cleaning</b></h4> 
             </div>
           </div>
           
-          <div className="card">
-            <img className="img1" src={carpenter} alt="Avatar"/>
-            <div className="container">
+          <div className="card_s">
+            <img className="img_1" src={carpenter} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Carpenter</b></h4> 
             </div>
           </div>
           
-          <div className="card">
-            <img className="img1" src={electrician} alt="Avatar"/>
-            <div className="container">
+          <div className="card_s">
+            <img className="img_1" src={electrician} alt="Avatar"/>
+            <div className="containers_text">
               <h4><b>Electrician</b></h4> 
             </div>
           </div>
         </div>
-        <div>
-          <div className="footer-dark">
-            <footer className="foot">
-              <h3 style={mystyle}>About Us</h3>
-              <h3>Review</h3>
-              <h3>Work with Us</h3>
-              <h3>Contact Information</h3>
-            </footer>
-            <footer>
-              <hr/>
-              <div className="col item social"><a href="#"><i className="fa fa-facebook"></i></a><a href="#"><i className="fa fa-twitter"></i></a><a href="#"><i className="fa fa-linkedin"></i></a><a href="#"><i className="fa fa-instagram"></i></a>
-              </div>            
-              <p className="copyright">Company Name © 2021</p>
-            </footer>
-          </div>
+        <div className="foot">
+        <Footer/>
         </div>
+        
       </div>
     );
   }

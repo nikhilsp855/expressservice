@@ -11,13 +11,6 @@ export class AllComp extends React.Component {
 
         return <div>
 
-            <ul className='allul'>
-                <li className='allli'><Link to='/' >Home</Link></li>
-                <li className='allli'><Link to='/serviceprovider'>Service Provider</Link></li>
-                <li className='allli'><Link to='/service'>Service</Link></li>
-                
-            </ul>
-
             <Switch>
 
                 <Route path= '/' component={Home} exact ></Route>
