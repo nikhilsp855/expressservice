@@ -1,0 +1,25 @@
+.title{
+    text-align: center;
+    background-color: black;
+    color: white;
+    /* width: fit-content; */
+    /* margin-left: 50%; */
+    border: 2px solid burlywood;
+}
+
+.chart-title{
+    text-align: center;
+    background-color: black;
+    color: white;
+    /* width: fit-content; */
+    margin-right: 50%;
+    border: 2px solid burlywood;
+}
+
+.chart{
+    border: black solid 2px;
+}
+
+#stats-style{
+    background: none;
+}
