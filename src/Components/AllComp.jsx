@@ -3,6 +3,7 @@ import { Switch, Link, Route} from 'react-router-dom';
 import Home from './HomePage/Home';
 import HomeP from '../pages/HomeP';
 import { ServiceProvider } from './ServiceProviderPage/serviceProvider';
+import Admin from './Admin';
 
 export class AllComp extends React.Component {
 
@@ -23,12 +24,17 @@ export class AllComp extends React.Component {
                 <li>
                     <Link to='/service'>Service</Link>
                 </li>
+
+                <li>
+                    <Link to='/admin'>Admin</Link>
+                </li>
             </ul>
             <Switch>
 
                 <Route exact path= '/' component={Home} exact ></Route>
                 <Route path='/serviceprovider' component={ServiceProvider} exact></Route>
                 <Route path='/service' component={HomeP} exact></Route>
+                <Route path='/admin' component={Admin} ></Route>
             </Switch>    
             
         </div>
