@@ -4,6 +4,7 @@ import Home from './HomePage/Home';
 import HomeP from '../pages/HomeP';
 import { ServiceProvider } from './ServiceProviderPage/serviceProvider';
 import Admin from './Admin';
+import Final from './Login_register/final';
 
 export class AllComp extends React.Component {
 
@@ -28,6 +29,9 @@ export class AllComp extends React.Component {
                 <li>
                     <Link to='/admin'>Admin</Link>
                 </li>
+                <li>
+                    <Link to='/login'>Login & Register</Link>
+                </li>
             </ul>
             <Switch>
 
@@ -35,6 +39,7 @@ export class AllComp extends React.Component {
                 <Route path='/serviceprovider' component={ServiceProvider} exact></Route>
                 <Route path='/service' component={HomeP} exact></Route>
                 <Route path='/admin' component={Admin} ></Route>
+                <Route path='/login' component={Final} ></Route>
             </Switch>    
             
         </div>
