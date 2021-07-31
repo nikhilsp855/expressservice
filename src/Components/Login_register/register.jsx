@@ -40,6 +40,8 @@ export class Register extends React.Component {
   validateForm() {
 
     let fields = this.state.fields;
+
+    
     let errors = {};
     let formIsValid = true;
 
@@ -87,7 +89,7 @@ export class Register extends React.Component {
     }
 
     if (typeof fields["password"] !== "undefined" && typeof fields["cpassword"] !== "undefined") {
-      if (fields["password"] != fields["confirm_password"]) {
+      if (fields["password"] != fields["cpassword"]) {
         formIsValid = false;
         errors["cpassword"] = "Passwords don't match.";
   
