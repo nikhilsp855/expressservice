@@ -109,7 +109,7 @@ export class Register extends React.Component {
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Register</div>
-        <form method="post"  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm} >
+        <form method="post"  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm}>
         <div className="content">
           <div className="form">
             <div className="form-group">
