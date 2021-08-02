@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-export class Register extends React.Component {
+export class Spregister extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ export class Register extends React.Component {
     fields[e.target.name] = e.target.value;
     this.setState({
       fields
-    });
+    }); 
 
   }
 
@@ -32,6 +32,8 @@ export class Register extends React.Component {
         fields["email"] = "";
         fields["password"] = "";
         fields["cpassword"] = "";
+        fields["servname"] = "";
+        fields["file"] = "";
         this.setState({fields:fields});
         alert("Registration request sent");
     }
@@ -92,6 +94,14 @@ export class Register extends React.Component {
         errors["cpassword"] = "Passwords don't match.";
   
       }
+    if (!fields["servname"]) {
+        formIsValid = false;
+        errors["servname"] = "*Please enter service name.";
+    }
+    if (!fields["file"]) {
+      formIsValid = false;
+      errors["file"] = "*Please upload file.";
+  }
   
   }
 
@@ -132,6 +142,16 @@ export class Register extends React.Component {
               <input type="password" name="cpassword" placeholder="confirm password" value={this.state.fields.cpassword} onChange={this.handleChange} />
               <div className="errorMsg">{this.state.errors.cpassword}</div>
             </div>
+            <div className="form-group">
+              <label htmlFor="service">Enter the service provided</label>
+              <input type="text" name="service" placeholder="Service name" value={this.state.fields.servname} onChange={this.handleChange} />
+              <div className="errorMsg">{this.state.errors.servname}</div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="document">Upload Document For Verification</label>
+              <input type="file" name="file" value={this.state.fields.file} onChange={this.handleChange}/>
+              <div className="errorMsg">{this.state.errors.file}</div>
+            </div>
           </div>
         </div>
         <div className="footer">
@@ -140,10 +160,10 @@ export class Register extends React.Component {
           </button>
           </div> 
         </form>
-        <div className="guide">Password must contain atleast 8 characters including-
+        <h6>Password must contain atleast 8 characters including-
              An uppercase character,a lower character,
              a digit and a symbol.
-        </div>
+        </h6>
       </div>
     );
   }
