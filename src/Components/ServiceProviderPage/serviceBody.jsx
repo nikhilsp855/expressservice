@@ -20,10 +20,10 @@ export class ServiceBody extends React.Component {
                         <div className="col-md-4 greyBlackBackground">
                       
                             <h2><strong>Overview</strong></h2>
-                            <div className='overEle'><Link to='/service' id='active'>Customer</Link></div>
-                            <div className='overEle'><Link to='/service/updateDetails'>Update Details</Link></div>
-                            <div className='overEle'><Link to='/service/trendingItems'>Trending Items</Link></div>
-                            <div className='overEle'><Link to='/service/stats'>Stats</Link></div>
+                            <div className='overEle'><Link to='/serviceprovider' id='active'>Customer</Link></div>
+                            <div className='overEle'><Link to='/serviceprovider/updateDetails'>Update Details</Link></div>
+                            <div className='overEle'><Link to='/serviceprovider/trendingItems'>Trending Items</Link></div>
+                            <div className='overEle'><Link to='/serviceprovider/stats'>Stats</Link></div>
                         </div>
 
                         <div class="col-md-8">
