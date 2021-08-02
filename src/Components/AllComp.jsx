@@ -35,9 +35,9 @@ export class AllComp extends React.Component {
             </ul>
             <Switch>
 
-                <Route exact path= '/' component={Home} exact ></Route>
-                <Route path='/serviceprovider' component={ServiceProvider} exact></Route>
-                <Route path='/service' component={HomeP} exact></Route>
+                <Route exact path= '/' component={Home}></Route>
+                <Route path='/serviceprovider' component={ServiceProvider}></Route>
+                <Route path='/service' component={HomeP}></Route>
                 <Route path='/admin' component={Admin} ></Route>
                 <Route path='/login' component={Final} ></Route>
             </Switch>    
