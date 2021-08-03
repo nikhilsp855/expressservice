@@ -5,41 +5,33 @@ import HomeP from '../pages/HomeP';
 import { ServiceProvider } from './ServiceProviderPage/serviceProvider';
 import Admin from './Admin';
 import Final from './Login_register/final';
-
+import VerifyOtp from './Otp/verifyOtp';
 export class AllComp extends React.Component {
+constructor(){
+    super();
+        this.state={
+            count: 0
+    }
+}
 
+loadChangeafterOtp=(count)=>{
+    this.setState({count:count})
+    
+}
     render() {
 
         return <div>
-
-            <ul>
-                <li>
-
-                    <Link to='/'>Home</Link>
-                </li>
-
-                <li>
-                    <Link to='/serviceprovider'>Service Provider</Link>
-                </li>
-
-                <li>
-                    <Link to='/service'>Service</Link>
-                </li>
-
-                <li>
-                    <Link to='/admin'>Admin</Link>
-                </li>
-                <li>
-                    <Link to='/login'>Login & Register</Link>
-                </li>
-            </ul>
             <Switch>
-
+                <Route path= '/verifyOtp'>
+                    <VerifyOtp loadChangeafterOtp={this.loadChangeafterOtp}/>
+                </Route>
                 <Route exact path= '/' component={Home} exact ></Route>
                 <Route path='/serviceprovider' component={ServiceProvider} exact></Route>
                 <Route path='/service' component={HomeP} exact></Route>
                 <Route path='/admin' component={Admin} ></Route>
-                <Route path='/login' component={Final} ></Route>
+                <Route path='/login'>
+                    <Final count={this.state.count}/>
+                </Route>
             </Switch>    
             
         </div>

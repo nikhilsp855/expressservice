@@ -33,7 +33,7 @@
       margin-top: 5px;
   }
   
-  .hmli a {
+  .hmli {
     display: block;
     color: white;
     text-align: center;
@@ -41,8 +41,9 @@
     text-decoration: none;
   }
   
-  .hmli a:hover{
-    background-color: #111;
+  .hmli:hover{
+    background-color:white;
+    color: black;
   }
   .card_s {
     display: inline-block;

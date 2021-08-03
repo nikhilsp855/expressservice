@@ -29,7 +29,6 @@ export class Register extends React.Component {
     if (this.validateForm()) {
         let fields = {};
         fields["username"] = "";
-        fields["email"] = "";
         fields["password"] = "";
         fields["cpassword"] = "";
         this.setState({fields:fields});
@@ -54,20 +53,6 @@ export class Register extends React.Component {
       if (!fields["username"].match(/^[a-zA-Z ]*$/)) {
         formIsValid = false;
         errors["username"] = "*Please enter alphabet characters only.";
-      }
-    }
-
-    if (!fields["email"]) {
-      formIsValid = false;
-      errors["email"] = "*Please enter your email-ID.";
-    }
-
-    if (typeof fields["email"] !== "undefined") {
-      
-      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-      if (!pattern.test(fields["email"])) {
-        formIsValid = false;
-        errors["email"] = "*Please enter valid email-ID.";
       }
     }
 
@@ -118,11 +103,6 @@ export class Register extends React.Component {
               <label htmlFor="username">Username</label>
               <input type="text" name="username"  placeholder="username" value={this.state.fields.username} onChange={this.handleChange}/>
               <div className="errorMsg">{this.state.errors.username}</div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" placeholder="email" value={this.state.fields.email}  onChange={this.handleChange} />
-              <div className="errorMsg">{this.state.errors.email}</div>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
