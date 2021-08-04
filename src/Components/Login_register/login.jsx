@@ -71,7 +71,7 @@ export class Login extends React.Component {
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
-        <form method="post"  name="LoginForm"  onSubmit= {this.submitLoginForm}>
+        <form method="post" action="/login/loginuser" name="LoginForm"  onSubmit= {this.submitLoginForm}>
         <div className="content">
           <div className="form">
             <div className="form-group">
