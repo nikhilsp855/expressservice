@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 export class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -24,9 +22,39 @@ export class Register extends React.Component {
 
   }
 
+
+  async postData(){
+
+    console.log("PostData called");
+    const {username, password} = this.state.fields;
+
+    const res = await fetch("/login/register",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        username,password
+      })
+    });
+
+    const data = await res.json();
+    if(data.status(201)) {
+
+      alert("New user created");
+    }else if(data.status(202)) {
+
+      alert("Use different username");
+    }
+  }
+
+
+
   submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
+
+        this.postData();
         let fields = {};
         fields["username"] = "";
         fields["password"] = "";
@@ -96,7 +124,7 @@ export class Register extends React.Component {
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Register</div>
-        <form method="post"  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm}>
+        <form method="post" name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm}>
         <div className="content">
           <div className="form">
             <div className="form-group">
