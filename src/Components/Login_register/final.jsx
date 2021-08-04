@@ -27,7 +27,7 @@ class Final extends React.Component {
   changeState() {
     const { isLogginActive } = this.state;
     if (isLogginActive) {
-      this.props.history.push("./verifyOtp");
+      //this.props.history.push("./verifyOtp");
       this.rightSide.classList.remove("right");
       this.rightSide.classList.add("left");
     } else {
