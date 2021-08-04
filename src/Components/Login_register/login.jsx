@@ -27,7 +27,7 @@ export class Login extends React.Component {
     e.preventDefault();
     if (this.validateForm()) {
         let fields = {};
-        fields["username"] = "";
+        fields["usernamez"] = "";
         fields["password"] = "";
         this.setState({fields:fields});
        

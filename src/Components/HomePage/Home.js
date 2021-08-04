@@ -23,8 +23,8 @@ class Home extends React.Component{
         <div className="header">
           <ul className='hmul'>
             <img className="logo hmimg" src={logo} width="60" alt="home" height="60"/>
-            <li className='hmli'><a href="#home">Logout</a></li>
-            <li className='hmli'><a href="#about">Home</a></li>
+            <Link to="/login"><li className='hmli'>Login</li></Link>
+            <Link to="/"><li className='hmli'>Home</li></Link>
           </ul>
         </div>
         

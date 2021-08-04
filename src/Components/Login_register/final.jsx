@@ -1,6 +1,7 @@
 import React from "react";
 import "./final.scss";
 import { Login, Register } from "./index";
+import {withRouter} from "react-router-dom";
 
 class Final extends React.Component {
   constructor(props) {
@@ -11,14 +12,22 @@ class Final extends React.Component {
   }
 
   componentDidMount() {
+    if(this.props.count===1)
+    {
+      this.setState({isLogginActive:false})
+      this.rightSide.classList.add("left");
+    }
+    else{
+      this.rightSide.classList.add("right");
+    }
+      
     
-    this.rightSide.classList.add("right");
   }
 
   changeState() {
     const { isLogginActive } = this.state;
-
     if (isLogginActive) {
+      this.props.history.push("./verifyOtp");
       this.rightSide.classList.remove("right");
       this.rightSide.classList.add("left");
     } else {
@@ -69,4 +78,4 @@ const RightSide = props => {
   );
 };
 
-export default Final;
+export default withRouter(Final);
