@@ -34,17 +34,21 @@ export class Register extends React.Component {
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
-        username,password
+        email:username,username,password
       })
     });
 
     const data = await res.json();
-    if(data.status(201)) {
+    /*if(data.status(201)) {
 
       alert("New user created");
     }else if(data.status(202)) {
 
       alert("Use different username");
+    }*/
+    if(data) {
+    
+      console.log("Registration Data : ",data);
     }
   }
 

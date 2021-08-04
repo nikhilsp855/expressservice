@@ -23,8 +23,45 @@ export class Login extends React.Component {
 
   }
 
+
+  async postData(){
+
+    console.log("PostData called");
+    const {username, password} = this.state.fields;
+
+    const res = await fetch("/login/loginuser",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        username,password
+      })
+    });
+
+    const data = await res.json();
+    /*if(data.status(200)) {
+
+      alert("Login successfull");
+      console.log("Login successfull")
+    }else if(data.status(202)) {
+
+      alert("Login unsuccessfull");
+      console.log("Login unsuccessfull")
+    }*/
+
+    if(data) {
+
+      alert("Login successfull");
+      console.log("Login Data : ",data);
+    }
+  }
+
+
+
   submitLoginForm(e) {
     e.preventDefault();
+    this.postData();
     if (this.validateForm()) {
         let fields = {};
         fields["usernamez"] = "";
