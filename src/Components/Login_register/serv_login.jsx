@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export class Login extends React.Component {
+export class Splogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +27,7 @@ export class Login extends React.Component {
     e.preventDefault();
     if (this.validateForm()) {
         let fields = {};
-        fields["usernamez"] = "";
+        fields["username"] = "";
         fields["password"] = "";
         this.setState({fields:fields});
        
@@ -71,7 +71,7 @@ export class Login extends React.Component {
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
-        <form method="post"  name="LoginForm"  onSubmit= {this.submitLoginForm}>
+        <form method="post"  name="LoginForm"  onSubmit= {this.submitLoginForm} >
         <div className="content">
           <div className="form">
             <div className="form-group">

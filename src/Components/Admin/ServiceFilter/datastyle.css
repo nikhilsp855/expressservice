@@ -1,0 +1,19 @@
+.table-style {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+  transition: 0.5s;
+  width: 80%;
+  border-radius: 5px;
+  }
+
+.tbody,
+tr,td {
+    white-space: nowrap;
+    width: 20%;
+    overflow-wrap: break-word;
+    padding: 0.5rem;
+  }
+  
