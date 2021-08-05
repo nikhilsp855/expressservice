@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from 'axios';
 
 
 export class Register extends React.Component {
@@ -32,6 +32,7 @@ export class Register extends React.Component {
         fields["password"] = "";
         fields["cpassword"] = "";
         this.setState({fields:fields});
+        console.log(this.state.fields);
         alert("Registration request sent");
     }
 

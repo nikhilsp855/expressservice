@@ -48,6 +48,7 @@ class VerifyOtp extends React.Component {
         .then(data =>{
             if(data.data.status==='approved')
             {
+               
                 this.props.loadChangeafterOtp(1);
                 this.props.history.push("./login");
             }
