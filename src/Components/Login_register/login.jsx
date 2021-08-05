@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 
 export class Login extends React.Component {
@@ -6,7 +7,8 @@ export class Login extends React.Component {
     super(props);
     this.state = {
       fields: {},
-      errors: {}
+      errors: {},
+      route : null
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -54,6 +56,7 @@ export class Login extends React.Component {
 
       alert("Login successfull");
       console.log("Login Data : ",data);
+      this.setState({route : "/"});
     }
   }
 
@@ -61,8 +64,9 @@ export class Login extends React.Component {
 
   submitLoginForm(e) {
     e.preventDefault();
-    this.postData();
+    
     if (this.validateForm()) {
+      this.postData();
         let fields = {};
         fields["usernamez"] = "";
         fields["password"] = "";
@@ -105,6 +109,8 @@ export class Login extends React.Component {
   }
 
   render() {
+
+    if(this.state.route!="/"){
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
@@ -131,5 +137,8 @@ export class Login extends React.Component {
         </form>
       </div>
     );
+  }else {
+    return <Redirect to={this.state.route}/>;
+  }
   }
 }
