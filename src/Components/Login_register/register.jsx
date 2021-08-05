@@ -27,14 +27,14 @@ export class Register extends React.Component {
 
     console.log("PostData called");
     const {username, password} = this.state.fields;
-
     const res = await fetch("/login/register",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
-        email:username,username,password
+        email:username,username,password,
+        pno: this.props.pno
       })
     });
 

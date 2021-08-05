@@ -27,7 +27,7 @@ class VerifyOtp extends React.Component {
 
     _getCode = async() => {
         const e = this.state.code+this.state.pno;
-        await axios.get("http://localhost:3001/verify/getcode", {
+        await axios.get("/verify/getcode", {
             params: {
                 phonenumber: e,
                 channel: 'sms'
@@ -39,7 +39,7 @@ class VerifyOtp extends React.Component {
 
     _verifyCode = async () => {
         const e = this.state.code+this.state.pno;
-        await axios.get("http://localhost:3001/verify/verifycode", {
+        await axios.get("/verify/verifycode", {
             params: {
                 phonenumber: e,
                 code: this.state.otp
@@ -48,7 +48,7 @@ class VerifyOtp extends React.Component {
         .then(data =>{
             if(data.data.status==='approved')
             {
-               
+                this.props.getPhoneNumber(this.state.pno);
                 this.props.loadChangeafterOtp(1);
                 this.props.history.push("./login");
             }

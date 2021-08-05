@@ -14,6 +14,7 @@ class Final extends React.Component {
   componentDidMount() {
     if(this.props.count===1)
     {
+      console.log(this.props.pno)
       this.setState({isLogginActive:false})
       this.rightSide.classList.add("left");
     }
@@ -27,7 +28,7 @@ class Final extends React.Component {
   changeState() {
     const { isLogginActive } = this.state;
     if (isLogginActive) {
-      //this.props.history.push("./verifyOtp");
+      this.props.history.push("./verifyOtp");
       this.rightSide.classList.remove("right");
       this.rightSide.classList.add("left");
     } else {
@@ -49,7 +50,7 @@ class Final extends React.Component {
               <Login containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
-              <Register containerRef={ref => (this.current = ref)} />
+              <Register containerRef={ref => (this.current = ref)} pno={this.props.pno}/>
             )}
           </div>
           <RightSide
