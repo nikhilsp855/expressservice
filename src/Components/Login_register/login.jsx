@@ -8,7 +8,8 @@ export class Login extends React.Component {
     this.state = {
       fields: {},
       errors: {},
-      route : null
+      route : null,
+      accessToken : null
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,7 +56,8 @@ export class Login extends React.Component {
     if(data) {
 
       alert("Login successfull");
-      console.log("Login Data : ",data);
+      console.log("Login Data : ",data," And accessToken : ",data.accessToken);
+      this.setState({accessToken : data.accessToken});
       this.setState({route : "/"});
     }
   }
@@ -138,7 +140,7 @@ export class Login extends React.Component {
       </div>
     );
   }else {
-    return <Redirect to={this.state.route}/>;
+    return <Redirect to={{pathname:this.state.route,state:{accessToken : this.state.accessToken}}}/>;
   }
   }
 }

@@ -27,7 +27,7 @@ class VerifyOtp extends React.Component {
 
     _getCode = async() => {
         const e = this.state.code+this.state.pno;
-        await axios.get("/verify/getcode", {
+        await axios.get("http://localhost:4000/verify/getcode", {
             params: {
                 phonenumber: e,
                 channel: 'sms'
@@ -39,7 +39,7 @@ class VerifyOtp extends React.Component {
 
     _verifyCode = async () => {
         const e = this.state.code+this.state.pno;
-        await axios.get("/verify/verifycode", {
+        await axios.get("http://localhost:4000/verify/verifycode", {
             params: {
                 phonenumber: e,
                 code: this.state.otp
