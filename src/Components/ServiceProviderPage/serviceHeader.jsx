@@ -1,18 +1,25 @@
 import React from 'react'
-import manish from './images/manish.jpg'
+// import manish from './images/manish.jpg'
+import profile from './images/profile.jpg'
 
 export class ServiceHeader extends React.Component {
 
-    render() {
+	state = {
+		profileImg: profile,
+		ServiceTitle: 'Choudhary Furnitures'
+	}
 
+	
+
+    render() {
         return <div> 
             <div className="jumbotron text-center serviceHeader">
             
                 <h2 className='companyName'>Express Service</h2>
-                <h1 className='sph1'><b>Choudhary Furnitures</b></h1>
+                <h1 className='sph1'><b>{this.state.ServiceTitle}</b></h1>
 		        <h3 className='sph3'>We build, We decorate, We innovate</h3>
-
-                <img src={ manish } alt="choudhary image" className='spImage'/>
+				
+                <img src={ this.state.profileImg } alt="profile image" className='spImage'/>
 	        </div>
 
             <div className='stickyTop'>

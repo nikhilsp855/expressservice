@@ -1,7 +1,7 @@
 import React from 'react';
 import { CustomerList } from './customerList';
 import { Switch, Link, Route} from 'react-router-dom'
-import { UpdateDetails } from './updateDetails';
+import  UpdateDetails  from './updateDetails';
 import { TrendingItems } from './trendingItems';
 import { Stats } from './stats';
 
