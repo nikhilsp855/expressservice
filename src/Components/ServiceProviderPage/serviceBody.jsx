@@ -31,7 +31,7 @@ export class ServiceBody extends React.Component {
                             <Switch>
 
                                 <Route exact path='/serviceprovider' component={CustomerList}></Route>
-                                <Route path='/serviceprovider/updateDetails' component={UpdateDetails}></Route>
+                                   <Route path='/serviceprovider/updateDetails' component={UpdateDetails}></Route>
                                 <Route path='/serviceprovider/trendingItems' component={TrendingItems}></Route>
                                 <Route path='/serviceprovider/stats' component={Stats}></Route>
 

@@ -66,7 +66,7 @@ export const EditUser = (props) => {
                 <Input type='text' name='name' value= {selectedName.name} onChange={onNameChange} 
                 placeholder='Enter Service'></Input>
             </FormGroup>
-            <Button className="btn text-secondary" type='submit'>Edit Service Name</Button>
+            <Button className="btn btn-secondary" type='submit'>Edit Service Name</Button>
         </Form>
         <Form onSubmit={onSubmitCost }>
             <FormGroup>
@@ -74,16 +74,16 @@ export const EditUser = (props) => {
                 <Input type='text' name='cost' value= {selectedCost.cost} onChange={onCostChange} 
                 placeholder='Enter Cost'></Input>
             </FormGroup>
-            <Button className="btn text-secondary" type='submit'>Edit Service Cost</Button>
+            <Button className="btn btn-secondary" type='submit'>Edit Service Cost</Button>
         </Form>
         <Form onSubmit={onSubmitTime }>
             <FormGroup>
                 <Label>Required Days</Label>
                 <Input type='text' name='time' value= {selectedTime.time} onChange={onTimeChange} placeholder='Enter days'></Input>
             </FormGroup>
-            <Button className="btn text-secondary" type='submit'>Edit Service Time</Button>
+            <Button className="btn btn-secondary" type='submit'>Edit Service Time</Button>
         </Form>
-            <Link to='/serviceprovider/updateDetails/' className ="btn text-danger ml-2">Cancel</Link>
+            <Link to='/serviceprovider/updateDetails/' className ="btn btn-danger ml-2">Cancel</Link>
         </>
         
     )
