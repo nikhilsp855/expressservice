@@ -6,7 +6,14 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 export default function ServiceFilter() {
-  const [data, setData] = useState([]);               //customer data
+  const [data, setData] = useState([                              //customer data
+    {"id":"101","name":"Ammar Habib","Username":"Ammar","email":"Ammar@bazinga.com","Contact":"99745"},
+    {"id":"102","name":"Ishwar More","Username":"Ishwar","email":"Ishwar@bazinga.com","Contact":"99745"},
+    {"id":"103","name":"Kshitij Patil","Username":"Kshitij","email":"Kshitij@bazinga.com","Contact":"99745"},
+    {"id":"104","name":"Manish Choudhary","Username":"Manish","email":"Manish@bazinga.com","Contact":"99745"},
+    {"id":"105","name":"Nikhil Patil","Username":"Nikhil","email":"Nikhil@bazinga.com","Contact":"99745"},
+
+  ]);              
   const [q, setQ] = useState('');
 
 
@@ -22,7 +29,6 @@ export default function ServiceFilter() {
       return rows.filter(row => row.name.toLowerCase().indexOf(q)> -1)
   }
 
-  const columns = data[0] && Object.keys(data[0]);
   return (
     <div>
       <div>

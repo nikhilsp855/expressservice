@@ -5,6 +5,7 @@ import { IconContext } from 'react-icons/lib';
 import * as FaIcons from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 //import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import AdminHeader from './AdminHeader';
 
 export default function SideBar() {
 
@@ -34,7 +35,7 @@ export default function SideBar() {
                 </Link>
               </li>
               {SideBarData.map((item, index) => {
-                return (
+                return (   
                   <li key={index} className={item.cName}>
                     <Link to={item.path}>
                       {item.icon}
@@ -46,6 +47,7 @@ export default function SideBar() {
             </ul>
           </nav>
         </IconContext.Provider>
+        <AdminHeader/>
       </>
     );
 }
