@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 
 export class Splogin extends React.Component {
@@ -6,7 +7,9 @@ export class Splogin extends React.Component {
     super(props);
     this.state = {
       fields: {},
-      errors: {}
+      errors: {},
+      route : '/splogin',
+      accessToken : null
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,13 +26,53 @@ export class Splogin extends React.Component {
 
   }
 
+
+  async postData(){
+
+    console.log("PostData called");
+    const {username, password} = this.state.fields;
+
+    const res = await fetch("/splogin/loginSP",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        username,password
+      })
+    });
+
+    const data = await res.json();
+    /*if(data.status(200)) {
+
+      alert("Login successfull");
+      console.log("Login successfull")
+    }else if(data.status(202)) {
+
+      alert("Login unsuccessfull");
+      console.log("Login unsuccessfull")
+    }*/
+
+    if(data) {
+
+      alert("Login successfull");
+      console.log("Login Data : ",data," And accessToken : ",data.accessToken);
+      this.setState({accessToken : data.accessToken});
+      this.setState({route : "/serviceprovider"});
+    }
+  }
+
+
+
   submitLoginForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
-        let fields = {};
-        fields["username"] = "";
-        fields["password"] = "";
-        this.setState({fields:fields});
+
+      this.postData();
+      let fields = {};
+      fields["username"] = "";
+      fields["password"] = "";
+      this.setState({fields:fields});
        
     }
 
@@ -68,6 +111,8 @@ export class Splogin extends React.Component {
   }
 
   render() {
+
+    if(this.state.route=="/splogin"){
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
@@ -87,12 +132,16 @@ export class Splogin extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button type="submit" className="btn" value="Login">
+          <button type="submit" className="btn1" value="Login">
             Login
           </button>
         </div>
         </form>
       </div>
     );
+    }else {
+
+      return <Redirect to={{pathname:this.state.route,state:{accessToken : this.state.accessToken}}}/>;
+    }
   }
 }

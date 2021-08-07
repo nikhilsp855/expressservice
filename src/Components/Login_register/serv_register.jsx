@@ -24,9 +24,42 @@ export class Spregister extends React.Component {
 
   }
 
+
+  async postData(){
+
+    console.log("PostData called");
+    const {username, password, email, servname} = this.state.fields;
+    const res = await fetch("/splogin/registerSP",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        username,password,email,servname,
+        pno: this.props.pno
+      })
+    });
+
+    const data = await res.json();
+    /*if(data.status(201)) {
+
+      alert("New user created");
+    }else if(data.status(202)) {
+
+      alert("Use different username");
+    }*/
+    if(data) {
+    
+      console.log("Registration Data : ",data);
+    }
+  }
+
+
   submituserRegistrationForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
+
+        this.postData();
         let fields = {};
         fields["username"] = "";
         fields["email"] = "";
@@ -143,8 +176,8 @@ export class Spregister extends React.Component {
               <div className="errorMsg">{this.state.errors.cpassword}</div>
             </div>
             <div className="form-group">
-              <label htmlFor="service">Enter the service provided</label>
-              <input type="text" name="service" placeholder="Service name" value={this.state.fields.servname} onChange={this.handleChange} />
+              <label htmlFor="servname">Enter the service provided</label>
+              <input type="text" name="servname" placeholder="Service name" value={this.state.fields.servname} onChange={this.handleChange} />
               <div className="errorMsg">{this.state.errors.servname}</div>
             </div>
             <div className="form-group">
@@ -155,7 +188,7 @@ export class Spregister extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button type="submit" className="btn" value="Register">
+          <button type="submit" className="btn1" value="Register">
             Register
           </button>
           </div> 
