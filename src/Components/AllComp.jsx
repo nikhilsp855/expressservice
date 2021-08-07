@@ -6,6 +6,7 @@ import { ServiceProvider } from './ServiceProviderPage/serviceProvider';
 import Admin from './Admin';
 import Final from './Login_register/final';
 import VerifyOtp from './Otp/verifyOtp';
+import Booking from '../pages/Booking';
 export class AllComp extends React.Component {
 constructor(){
     super();
@@ -37,6 +38,7 @@ getPhoneNumber=(pno)=>{
                 <Route path='/login'>
                     <Final count={this.state.count} pno={this.state.pno} />
                 </Route>
+                <Route path='/booking' component={Booking} exact></Route>
             </Switch>    
             
         </div>

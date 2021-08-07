@@ -132,7 +132,7 @@ export class Login extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button type="submit" className="btn" value="Login">
+          <button type="submit" className="btn1" value="Login">
             Login
           </button>
         </div>

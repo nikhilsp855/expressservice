@@ -155,7 +155,7 @@ export class Spregister extends React.Component {
           </div>
         </div>
         <div className="footer">
-          <button type="submit" className="btn" value="Register">
+          <button type="submit" className="btn1" value="Register">
             Register
           </button>
           </div> 
