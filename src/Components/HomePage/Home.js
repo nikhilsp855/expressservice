@@ -39,6 +39,7 @@ export class HomeHeader extends React.Component {
           <li className='hmli'>{this.props.payload.name}</li>
           <li className='hmli' onClick={this.props.logoutUser}>Logout</li>
           <Link to="/"><li className='hmli'>Home</li></Link>
+          <Link to="/splogin"><li className='hmli'>SP login</li></Link>
         </ul>
       </div>
     }else{
@@ -47,6 +48,7 @@ export class HomeHeader extends React.Component {
           <img className="logo hmimg" src={logo} width="60" alt="home" height="60"/>
           <Link to="/login"><li className='hmli'>Login</li></Link>
           <Link to="/"><li className='hmli'>Home</li></Link>
+          <Link to="/splogin"><li className='hmli'>SP login</li></Link>
         </ul>
       </div>
     }
