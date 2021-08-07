@@ -33,7 +33,7 @@ export class Register extends React.Component {
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
-        email:username,username,password,
+        username,password,
         pno: this.props.pno
       })
     });
