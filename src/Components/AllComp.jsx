@@ -6,12 +6,11 @@ import { ServiceProvider } from './ServiceProviderPage/serviceProvider';
 import Admin from './Admin';
 import Final from './Login_register/final';
 import VerifyOtp from './Otp/verifyOtp';
-<<<<<<< HEAD
+
 import Booking from '../pages/Booking';
-=======
+
 import Spfinal from './Login_register/spfinal';
 
->>>>>>> 5e5b508b89f12ba0cb5fea225ece082eb3fc4aad
 export class AllComp extends React.Component {
 constructor(){
     super();
@@ -43,13 +42,11 @@ getPhoneNumber=(pno)=>{
                 <Route path='/login'>
                     <Final count={this.state.count} pno={this.state.pno} />
                 </Route>
-<<<<<<< HEAD
+
                 <Route path='/booking' component={Booking} exact></Route>
-=======
                 <Route path='/splogin'>
                     <Spfinal count={this.state.count} pno={this.state.pno} />
                 </Route>
->>>>>>> 5e5b508b89f12ba0cb5fea225ece082eb3fc4aad
             </Switch>    
             
         </div>
