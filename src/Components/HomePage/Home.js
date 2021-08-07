@@ -58,8 +58,8 @@ class Home extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      accessToken : this.props.location.state.accessToken,
-      payload : parseJwt(this.props.location.state.accessToken)
+      accessToken : this.props.location.state && this.props.location.state.accessToken,
+      payload : this.props.location.state && parseJwt(this.props.location.state.accessToken)
     }
   }
 
