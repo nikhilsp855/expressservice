@@ -9,7 +9,7 @@ export const Heading = () => {
                 <NavbarBrand href='/serviceprovider/updateDetails/'>Service</NavbarBrand>
                 <Nav>
                     <NavItem>
-                        <Link className='btn text-primary' to ='/serviceprovider/updateDetails/add'>Add Service</Link>
+                        <Link className='btn btn-primary' to ='/serviceprovider/updateDetails/add'>Add Service</Link>
                     </NavItem>
                 </Nav>
             </Container>

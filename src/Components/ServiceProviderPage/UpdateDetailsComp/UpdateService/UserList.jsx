@@ -13,12 +13,12 @@ export const UserList = () => {
                     <strong>Service Name:     {user.name} </strong>
                     <strong>Service Cost:     {user.cost} Rs </strong>
                     <strong>Service time:     {user.time} days </strong>
-                    <div className='ml-auto'>
-                        <Link className="btn text-warning " 
+                    <div className='mt-auto'>
+                        <Link className="btn btn-warning " 
                         to={`/serviceprovider/updateDetails/edit/${user.id}`}>Edit</Link>
 
                         <Button onClick = {()=>removeUser(user.id)}
-                        className='text-danger'>Delete</Button>
+                        className='btn btn-danger '>Delete</Button>
                     </div>
                 </ListGroupItem>
 
