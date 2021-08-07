@@ -33,26 +33,22 @@ export class Register extends React.Component {
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
-        email:username,username,password,
+        username:username,
+        password:password,
         pno: this.props.pno
       })
-    });
-
-    const data = await res.json();
-    /*if(data.status(201)) {
-
-      alert("New user created");
-    }else if(data.status(202)) {
-
-      alert("Use different username");
-    }*/
-    if(data) {
-    
-      console.log("Registration Data : ",data);
-    }
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      if(data==='success')
+      {
+        alert("User registerd successfully");
+      }
+      else{
+        alert("User Already Exists. Try Again with a different phone number.")
+      }
+    })
   }
-
-
 
   submituserRegistrationForm(e) {
     e.preventDefault();

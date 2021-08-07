@@ -37,7 +37,8 @@ export class Login extends React.Component {
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
-        username,password
+        name: username,
+        password:password
       })
     });
 
