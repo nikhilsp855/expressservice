@@ -1,13 +1,55 @@
 import React from 'react'
 import customerListStore from './serviceProviderCustomerAPI'
 
+
+
 export class CustomerList extends React.Component {
 
-    constructor() {
+    constructor(props) {
 
-        super();
-        this.state = {customers : customerListStore.getCustomer(), start : 0, len : customerListStore.getCustomer().length, update:false};
+        super(props);
+        this.state = {customers : [], start : 0, len : 0, update:false};
     }
+
+    async componentDidMount() {
+        this.getCustomerList(this.props.accessToken)
+          .then(elements => this.setState({ customers:elements, len:elements.length, start:0, update:false}))
+          .catch(e => console.log(e));
+    }
+
+
+    async getCustomerList(accessToken){
+
+    console.log("getCustomerList called");
+    console.log("accessToken : ",accessToken);
+
+
+    const res = await fetch("http://localhost:4000/serviceproviders",{
+      method : "POST",
+      headers : {
+        "Authorization":"Bearer "+accessToken
+      }
+    });
+
+    const data = await res.json();
+    /*if(data.status(200)) {
+
+      alert("Login successfull");
+      console.log("Login successfull")
+    }else if(data.status(202)) {
+
+      alert("Login unsuccessfull");
+      console.log("Login unsuccessfull")
+    }*/
+
+    if(data) {
+
+        console.log("data.customerList = ",data.customerList);
+        return data.customerList;
+    
+    }
+    return [];
+  }
 
     handleNext() {
 

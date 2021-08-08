@@ -6,12 +6,19 @@ import './myStyle.css';
 
 export class ServiceProvider extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          accessToken : this.props.location.state && this.props.location.state.accessToken
+        }
+    }
+
     render() {
 
         return <div>
 
             <ServiceHeader/>
-            <ServiceBody/>
+            <ServiceBody accessToken={this.state.accessToken}/>
             <ServiceFooter/>
         </div>
     }
