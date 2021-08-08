@@ -5,11 +5,20 @@ import  UpdateDetails  from './updateDetails';
 import { TrendingItems } from './trendingItems';
 import { Stats } from './stats';
 
+
 export class ServiceBody extends React.Component {
     
+    constructor(props) {
+        
+        super(props);
+        this.state = {
+          accessToken : this.props.accessToken,
+        }
+    }
 
     render() {
 
+        console.log("In Service body render(), ",this.state.customerList);
         return <div className="container-fluid margintop30">
             <div className="row">
 
@@ -30,8 +39,10 @@ export class ServiceBody extends React.Component {
 
                             <Switch>
 
-                                <Route exact path='/serviceprovider' component={CustomerList}></Route>
-                                   <Route path='/serviceprovider/updateDetails' component={UpdateDetails}></Route>
+                                <Route exact path='/serviceprovider'>
+                                    <CustomerList accessToken={this.state.accessToken}/>
+                                </Route>
+                                <Route path='/serviceprovider/updateDetails' component={UpdateDetails}></Route>
                                 <Route path='/serviceprovider/trendingItems' component={TrendingItems}></Route>
                                 <Route path='/serviceprovider/stats' component={Stats}></Route>
 
