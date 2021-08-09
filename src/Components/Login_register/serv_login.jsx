@@ -32,7 +32,7 @@ export class Splogin extends React.Component {
     console.log("PostData called");
     const {username, password} = this.state.fields;
 
-    const res = await fetch("/splogin/loginSP",{
+    const res = await fetch("http://localhost:4000/splogin/loginSP",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
