@@ -67,6 +67,7 @@ export class Spregister extends React.Component {
         fields["cpassword"] = "";
         fields["servname"] = "";
         fields["file"] = "";
+        fields["city"]="";
         this.setState({fields:fields});
         alert("Registration request sent");
     }
@@ -127,16 +128,21 @@ export class Spregister extends React.Component {
         errors["cpassword"] = "Passwords don't match.";
   
       }
-    if (!fields["servname"]) {
+    }
+    if (fields["servname"]==="select") {
         formIsValid = false;
-        errors["servname"] = "*Please enter service name.";
+        errors["servname"] = "*Please select service.";
     }
     if (!fields["file"]) {
       formIsValid = false;
       errors["file"] = "*Please upload file.";
-  }
+    }
+    if (fields["city"]==="select") {
+    formIsValid = false;
+    errors["city"] = "*Please select city.";
+   }
   
-  }
+  
 
    
 
@@ -176,9 +182,28 @@ export class Spregister extends React.Component {
               <div className="errorMsg">{this.state.errors.cpassword}</div>
             </div>
             <div className="form-group">
-              <label htmlFor="servname">Enter the service provided</label>
-              <input type="text" name="servname" placeholder="Service name" value={this.state.fields.servname} onChange={this.handleChange} />
+              <label htmlFor="servname">Select the service provided</label>
+              <select className="select" name="servname" value={this.state.fields.servname} onChange={this.handleChange}>
+                <option value="Grooming">Grooming</option>
+                <option value="Repair">Repair</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Painters">Painters</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Electrician">Electrician</option>
+                <option selected value="select">--select--</option>
+              </select>
               <div className="errorMsg">{this.state.errors.servname}</div>
+              <label htmlFor="servname">Select CIty</label>
+              <select className="city" name="city" value={this.state.fields.city} onChange={this.handleChange}>
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="BangaloreBlr">Bangalore</option>
+                <option value="Delhi">Delhi</option>
+                <option selected value="select">--select--</option>
+              </select>
+              <div className="errorMsg">{this.state.errors.city}</div>
             </div>
             <div className="form-group">
               <label htmlFor="document">Upload Document For Verification</label>
