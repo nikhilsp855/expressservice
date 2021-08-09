@@ -32,7 +32,7 @@ export class Login extends React.Component {
     console.log("PostData called");
     const {username, password} = this.state.fields;
 
-    const res = await fetch("/login/loginuser",{
+    const res = await fetch("http://localhost:4000/login/loginuser",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
