@@ -3,22 +3,67 @@ import {Link,useHistory} from 'react-router-dom'
 import { GlobalContext } from '../Context/GlobalState'
 import { Form,FormGroup,Label,Input,Button } from 'reactstrap'
 
+async function editSubService(accessToken,editedField,id) {
+
+    console.log("newUser at addSubService = ",editedField)
+    await fetch("http://localhost:4000/serviceproviders/updateDetails/editSubService",{
+            method : "POST",
+            headers : {
+                "Authorization":"Bearer "+accessToken,
+                "Content-Type" : "application/json" 
+            },
+            body : JSON.stringify({
+                editedField : editedField,
+                id : id
+            })
+    });
+}
+
+async function getSubServices(accessToken) {
+
+    const res = await fetch("http://localhost:4000/serviceproviders/updateDetails",{
+            method : "GET",
+            headers : {
+                "Authorization":"Bearer "+accessToken
+            }
+    });
+
+    const data = await res.json();
+
+    if(data) {
+
+        console.log("data.subServices = ",data.subServices);
+        return data.subServices;
+    
+    }
+    return [];
+}
+
 export const EditUser = (props) => {
 
-    const [selectedName,setSelectedName]=useState({
-        id:'',name:''
-    });
-    const [selectedCost,setSelectedCost]=useState({
-        id:'',cost:''
-    });
-    const [selectedTime,setSelectedTime]=useState({
-        id:'',time:''
-    });
-    const {users,editUser} =useContext(GlobalContext);
+    const [selectedName,setSelectedName]=useState({});
+    const [selectedCost,setSelectedCost]=useState({});
+    const [selectedTime,setSelectedTime]=useState({});
+    const [users, setData] = useState([]);
+    useEffect(() => {
+        getSubServices(props.accessToken)
+          .then((response) => setData(response))
+          .then(() => {
+            const userId =props.match.params.id;
+            const selectedName = users.find(user => user.id === userId );
+            const selectedCost = users.find(user => user.id === userId );
+            const selectedTime = users.find(user => user.id === userId );
+    
+            setSelectedName({name : selectedName.name});
+            setSelectedCost({cost : selectedCost.cost});
+            setSelectedTime({time : selectedTime.time});
+          })
+      }, []);
+    //const {users,editUser} =useContext(GlobalContext);
     const history = useHistory();
-    const currentUserID = props.match.params.id;
+    //const currentUserID = props.match.params.id;
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         const userId =currentUserID;
         const selectedName = users.find(user => user.id === userId );
         const selectedCost = users.find(user => user.id === userId );
@@ -29,32 +74,36 @@ export const EditUser = (props) => {
         setSelectedTime(selectedTime);
 
     },[currentUserID,users])
-
+*/
     const onSubmitName = ()=>{
-        editUser(selectedName);
+        //editUser(selectedName);
+        console.log("selectedName = ",selectedName);
+        editSubService(props.accessToken,selectedName,props.match.params.id);
         history.push('/serviceprovider/updateDetails/')
     }
 
     const onSubmitCost = ()=>{
-        editUser(selectedCost);
+        //editUser(selectedCost);
+        editSubService(props.accessToken,selectedCost,props.match.params.id);
         history.push('/serviceprovider/updateDetails/')
     }
 
     const onSubmitTime = ()=>{
-        editUser(selectedTime);
+        //editUser(selectedTime);
+        editSubService(props.accessToken,selectedTime,props.match.params.id);
         history.push('/serviceprovider/updateDetails/')
     }
 
     const onNameChange = (evt)=>{
-        setSelectedName({ ...selectedName, [evt.target.name]: evt.target.value })
+        setSelectedName({[evt.target.name]: evt.target.value })
     }
 
     const onCostChange = (evt)=>{
-        setSelectedCost({...selectedCost,[evt.target.name] : evt.target.value })
+        setSelectedCost({[evt.target.name] : evt.target.value })
     }
 
     const onTimeChange = (evt)=>{
-        setSelectedTime({...selectedTime,[evt.target.name] : evt.target.value })
+        setSelectedTime({[evt.target.name] : evt.target.value })
     }
 
     return (

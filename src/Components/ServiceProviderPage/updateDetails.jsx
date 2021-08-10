@@ -11,10 +11,11 @@ import { GlobalProvider } from './UpdateDetailsComp/Context/GlobalState'
 
 export class updateDetails extends Component {
     
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             profileImg: profile,
+            accessToken: this.props.accessToken
         }
     }
     
@@ -37,7 +38,6 @@ export class updateDetails extends Component {
 
         return (
             <div className='upd-img'>
-                Update Details
                 <h1>Update Details</h1>
                 <label className="card card-header">Update Profile Image:</label>
                 <div className="img-container">
@@ -52,12 +52,18 @@ export class updateDetails extends Component {
                     {previmg : this.state.profileImg ,
                     updateImg : this.updateImg.bind(this) }
                     } /> */}
-                 <div style={{maxWidth:"30rem",margin:"4rem auto"}}>
+                <div style={{maxWidth:"30rem",margin:"4rem auto"}}>
                     <GlobalProvider>
                         <BrowserRouter>
                             <Switch>
-                                <Route exact path ='/serviceprovider/updateDetails/' component = {UpdateHome}/>
-                                <Route path ='/serviceprovider/updateDetails/add' component = {AddUser}/>
+                                <Route exact path ='/serviceprovider/updateDetails/' >
+                                    <UpdateHome accessToken={this.state.accessToken}/>
+                                </Route>
+
+                                <Route path ='/serviceprovider/updateDetails/add'>
+                                    <AddUser accessToken={this.state.accessToken}/>
+                                </Route>
+                                
                                 <Route path ='/serviceprovider/updateDetails/edit/:id' component = {EditUser}/>
                             </Switch>
                         </BrowserRouter>
