@@ -1,8 +1,8 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer} from 'react';
 import AppReducer from './AppReducer';
 
 const initialstate={
-    users:[]
+    users: []
 }
 
 //context

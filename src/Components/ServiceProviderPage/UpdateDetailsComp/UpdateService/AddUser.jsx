@@ -4,8 +4,23 @@ import {Link,useHistory} from 'react-router-dom'
 import { GlobalContext } from '../Context/GlobalState'
 import { v4 as uuid } from 'uuid'
 
+async function addSubService(accessToken,newUser) {
 
-export const AddUser = () => {
+    console.log("newUser at addSubService = ",newUser)
+    await fetch("http://localhost:4000/serviceproviders/updateDetails/addSubService",{
+            method : "POST",
+            headers : {
+                "Authorization":"Bearer "+accessToken,
+                "Content-Type" : "application/json" 
+            },
+            body : JSON.stringify({
+                newService : newUser
+            })
+    });
+}
+
+
+export const AddUser = (props) => {
 
     const [name,setName]=useState('');
     const [cost,setCost]=useState('');
@@ -17,9 +32,10 @@ export const AddUser = () => {
     const onSubmit = ()=>{
         const newUSer = {
             id: uuid(), name , cost, time
-        }
-        addUser(newUSer)
-        history.push('/serviceprovider/updateDetails/')
+        };
+        addUser(newUSer);
+        addSubService(props.accessToken,newUSer)
+            .then(history.push('/serviceprovider/updateDetails/'));
     }
 
 
