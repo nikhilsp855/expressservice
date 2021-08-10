@@ -2,7 +2,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
+  
   
 
   .header {
@@ -13,14 +14,15 @@
   .content {
     display: flex;
     flex-direction: column;
+  
     
     
     .form {
       margin-top: 1em;
       display: flex;
       flex-direction: column;
-      align-items: center;
-
+      align-items: left;
+      margin-left: 3em;
       .form-group {
         display: flex;
         flex-direction: column;
@@ -28,6 +30,7 @@
         width: fit-content;
         label {
           font-size: 15px;
+ 
         }
         input {
           margin-top: 5px;
@@ -41,6 +44,7 @@
           border-radius: 4px;
           margin-bottom: 0px;
           transition: all 250ms ease-in-out;
+ 
           &:hover {
             background-color: #ffffff;
             box-shadow: 0px 0px 14px 0.3px #0e81ce96;
@@ -52,7 +56,7 @@
           }
           
         }
-
+       
         .errorMsg{
           color:red;
           font-size: 12px;
@@ -63,6 +67,7 @@
   
   .footer {
     margin-top: 1em;
+    
   }
   
 
