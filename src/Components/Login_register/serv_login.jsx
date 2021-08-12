@@ -115,7 +115,7 @@ export class Splogin extends React.Component {
     if(this.state.route=="/splogin"){
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Login</div>
+        <div className="header">Service Provider Login</div>
         <form method="post"  name="LoginForm"  onSubmit= {this.submitLoginForm} >
         <div className="content">
           <div className="form">
@@ -136,7 +136,7 @@ export class Splogin extends React.Component {
             Login
           </button>
         </div>
-        </form>
+        </form> 
       </div>
     );
     }else {

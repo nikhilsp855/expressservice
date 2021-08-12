@@ -10,12 +10,12 @@ export default class Stats extends Component {
     render() {
         return (
             <div id='stats-style'>
-                <h1 className="title">Stats</h1>
-                <h2 className="chart-title">Bar Chart</h2>
+                <h1 className="card c card-header color dark">Stats</h1>
+                <h2 className="card card-header">Bar Chart</h2>
                 <Barchart/>
-                <h2 className="chart-title">Line Chart</h2>
+                <h2 className="card  card-header">Line Chart</h2>
                 <Linechart/>
-                <h2 className="chart-title">Pie Chart</h2>
+                <h2 className="card card-header">Pie Chart</h2>
                 <Piechart/>
                 <Footer/>
             </div>

@@ -157,8 +157,8 @@ export class Spregister extends React.Component {
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Register</div>
-        <form method="post"  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm} >
+        <div className="header">Service Provider Registration</div>
+        <form method="post"  name="userRegistrationForm" encType="multipart/form-data" onSubmit= {this.submituserRegistrationForm} >
         <div className="content">
           <div className="form">
             <div className="form-group">

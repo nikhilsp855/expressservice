@@ -1,24 +1,84 @@
 import React,{useState,useEffect,useContext} from 'react'
-import {Link,useHistory} from 'react-router-dom'
+import {Link,useHistory,useParams} from 'react-router-dom'
 import { GlobalContext } from '../Context/GlobalState'
 import { Form,FormGroup,Label,Input,Button } from 'reactstrap'
 
+async function editSubService(accessToken,editedField,id) {
+
+    console.log("newUser at addSubService = ",editedField)
+    await fetch("http://localhost:4000/serviceproviders/updateDetails/editSubService",{
+            method : "POST",
+            headers : {
+                "Authorization":"Bearer "+accessToken,
+                "Content-Type" : "application/json" 
+            },
+            body : JSON.stringify({
+                editedField : editedField,
+                id : id
+            })
+    });
+}
+
+async function getSubServices(accessToken) {
+
+    const res = await fetch("http://localhost:4000/serviceproviders/updateDetails",{
+            method : "GET",
+            headers : {
+                "Authorization":"Bearer "+accessToken
+            }
+    });
+
+    const data = await res.json();
+
+    if(data) {
+
+        console.log("data.subServices = ",data.subServices);
+        return data.subServices;
+    
+    }
+    return [];
+}
+
 export const EditUser = (props) => {
 
-    const [selectedName,setSelectedName]=useState({
-        id:'',name:''
-    });
-    const [selectedCost,setSelectedCost]=useState({
-        id:'',cost:''
-    });
-    const [selectedTime,setSelectedTime]=useState({
-        id:'',time:''
-    });
-    const {users,editUser} =useContext(GlobalContext);
-    const history = useHistory();
-    const currentUserID = props.match.params.id;
+    const [selectedName,setSelectedName]=useState({});
+    const [selectedCost,setSelectedCost]=useState({});
+    const [selectedTime,setSelectedTime]=useState({});
+    const [users, setData] = useState([]);
+    const  {id} = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
+        console.log("PROPS = ",props);
+        getSubServices(props.accessToken)
+          .then((response) => {
+                setData(response);
+                console.log("response = ",response);
+                const userId =id;
+                const selectedName = response.find(user => user.id === userId );
+                const selectedCost = response.find(user => user.id === userId );
+                const selectedTime = response.find(user => user.id === userId );
+                
+                setSelectedName({name : selectedName.name});
+                setSelectedCost({cost : selectedCost.cost});
+                setSelectedTime({time : selectedTime.time});
+            })
+          /*.then(() => {
+            const userId =id;
+            console.log("id = ",id,",users = ",users);
+            const selectedName = users.find(user => user.id == userId );
+            const selectedCost = users.find(user => user.id == userId );
+            const selectedTime = users.find(user => user.id == userId );
+    
+            setSelectedName({name : selectedName.name});
+            setSelectedCost({cost : selectedCost.cost});
+            setSelectedTime({time : selectedTime.time});
+          })*/
+      }, []);
+    //const {users,editUser} =useContext(GlobalContext);
+    const history = useHistory();
+    //const currentUserID = props.match.params.id;
+
+    /*useEffect(()=>{
         const userId =currentUserID;
         const selectedName = users.find(user => user.id === userId );
         const selectedCost = users.find(user => user.id === userId );
@@ -29,32 +89,38 @@ export const EditUser = (props) => {
         setSelectedTime(selectedTime);
 
     },[currentUserID,users])
-
+*/
     const onSubmitName = ()=>{
-        editUser(selectedName);
-        history.push('/serviceprovider/updateDetails/')
+        //editUser(selectedName);
+        console.log("selectedName = ",selectedName," ,accessToken : ",props.accessToken);
+        editSubService(props.accessToken,selectedName,id)
+            .then(history.push('/serviceprovider/updateDetails/'))
     }
 
     const onSubmitCost = ()=>{
-        editUser(selectedCost);
-        history.push('/serviceprovider/updateDetails/')
+        //editUser(selectedCost);
+        console.log("selectedCost = ",selectedCost," ,accessToken : ",props.accessToken);
+        editSubService(props.accessToken,selectedCost,id)
+            .then(history.push('/serviceprovider/updateDetails/'))
     }
 
     const onSubmitTime = ()=>{
-        editUser(selectedTime);
-        history.push('/serviceprovider/updateDetails/')
+        //editUser(selectedTime);
+        console.log("selectedTime = ",selectedTime," ,accessToken : ",props.accessToken);
+        editSubService(props.accessToken,selectedTime,id)
+            .then(history.push('/serviceprovider/updateDetails/'))
     }
 
     const onNameChange = (evt)=>{
-        setSelectedName({ ...selectedName, [evt.target.name]: evt.target.value })
+        setSelectedName({[evt.target.name]: evt.target.value })
     }
 
     const onCostChange = (evt)=>{
-        setSelectedCost({...selectedCost,[evt.target.name] : evt.target.value })
+        setSelectedCost({[evt.target.name] : evt.target.value })
     }
 
     const onTimeChange = (evt)=>{
-        setSelectedTime({...selectedTime,[evt.target.name] : evt.target.value })
+        setSelectedTime({[evt.target.name] : evt.target.value })
     }
 
     return (
