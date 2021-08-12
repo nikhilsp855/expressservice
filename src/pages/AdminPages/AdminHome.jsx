@@ -7,7 +7,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <h1 className='title'>ADMIN</h1>
+                <h1 className='card card-header '>ADMIN</h1>
                 <b>Search for a Customer</b>
                 <ServiceFilter/>
                 <Footer/>
