@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react'
-import {Link,useHistory} from 'react-router-dom'
+import {Link,useHistory,useParams} from 'react-router-dom'
 import { GlobalContext } from '../Context/GlobalState'
 import { Form,FormGroup,Label,Input,Button } from 'reactstrap'
 
@@ -45,19 +45,34 @@ export const EditUser = (props) => {
     const [selectedCost,setSelectedCost]=useState({});
     const [selectedTime,setSelectedTime]=useState({});
     const [users, setData] = useState([]);
+    const  {id} = useParams();
+
     useEffect(() => {
+        console.log("PROPS = ",props);
         getSubServices(props.accessToken)
-          .then((response) => setData(response))
-          .then(() => {
-            const userId =props.match.params.id;
-            const selectedName = users.find(user => user.id === userId );
-            const selectedCost = users.find(user => user.id === userId );
-            const selectedTime = users.find(user => user.id === userId );
+          .then((response) => {
+                setData(response);
+                console.log("response = ",response);
+                const userId =id;
+                const selectedName = response.find(user => user.id === userId );
+                const selectedCost = response.find(user => user.id === userId );
+                const selectedTime = response.find(user => user.id === userId );
+                
+                setSelectedName({name : selectedName.name});
+                setSelectedCost({cost : selectedCost.cost});
+                setSelectedTime({time : selectedTime.time});
+            })
+          /*.then(() => {
+            const userId =id;
+            console.log("id = ",id,",users = ",users);
+            const selectedName = users.find(user => user.id == userId );
+            const selectedCost = users.find(user => user.id == userId );
+            const selectedTime = users.find(user => user.id == userId );
     
             setSelectedName({name : selectedName.name});
             setSelectedCost({cost : selectedCost.cost});
             setSelectedTime({time : selectedTime.time});
-          })
+          })*/
       }, []);
     //const {users,editUser} =useContext(GlobalContext);
     const history = useHistory();
@@ -77,21 +92,23 @@ export const EditUser = (props) => {
 */
     const onSubmitName = ()=>{
         //editUser(selectedName);
-        console.log("selectedName = ",selectedName);
-        editSubService(props.accessToken,selectedName,props.match.params.id);
-        history.push('/serviceprovider/updateDetails/')
+        console.log("selectedName = ",selectedName," ,accessToken : ",props.accessToken);
+        editSubService(props.accessToken,selectedName,id)
+            .then(history.push('/serviceprovider/updateDetails/'))
     }
 
     const onSubmitCost = ()=>{
         //editUser(selectedCost);
-        editSubService(props.accessToken,selectedCost,props.match.params.id);
-        history.push('/serviceprovider/updateDetails/')
+        console.log("selectedCost = ",selectedCost," ,accessToken : ",props.accessToken);
+        editSubService(props.accessToken,selectedCost,id)
+            .then(history.push('/serviceprovider/updateDetails/'))
     }
 
     const onSubmitTime = ()=>{
         //editUser(selectedTime);
-        editSubService(props.accessToken,selectedTime,props.match.params.id);
-        history.push('/serviceprovider/updateDetails/')
+        console.log("selectedTime = ",selectedTime," ,accessToken : ",props.accessToken);
+        editSubService(props.accessToken,selectedTime,id)
+            .then(history.push('/serviceprovider/updateDetails/'))
     }
 
     const onNameChange = (evt)=>{
