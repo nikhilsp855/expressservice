@@ -157,8 +157,8 @@ export class Spregister extends React.Component {
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Register</div>
-        <form method="post"  name="userRegistrationForm"  onSubmit= {this.submituserRegistrationForm} >
+        <div className="header">Service Provider Registration</div>
+        <form method="post"  name="userRegistrationForm" encType="multipart/form-data" onSubmit= {this.submituserRegistrationForm} >
         <div className="content">
           <div className="form">
             <div className="form-group">
@@ -199,7 +199,7 @@ export class Spregister extends React.Component {
               <select className="city" name="city" value={this.state.fields.city} onChange={this.handleChange}>
                 <option value="Pune">Pune</option>
                 <option value="Mumbai">Mumbai</option>
-                <option value="BangaloreBlr">Bangalore</option>
+                <option value="Bangalore">Bangalore</option>
                 <option value="Delhi">Delhi</option>
                 <option selected value="select">--select--</option>
               </select>

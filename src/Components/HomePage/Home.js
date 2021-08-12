@@ -146,7 +146,7 @@ class Home extends React.Component{
         <div className="foot">
         <Footer/>
         </div>
-        
+        <a href="/adminlogin">Admin Login</a>
       </div>
     );
   }

@@ -7,9 +7,11 @@ import Admin from './Admin';
 import Final from './Login_register/final';
 import VerifyOtp from './Otp/verifyOtp';
 
+
 import Booking from '../pages/Booking';
 
 import Spfinal from './Login_register/spfinal';
+import Adminfinal from './Login_register/adminfinal';
 
 export class AllComp extends React.Component {
 constructor(){
@@ -38,11 +40,11 @@ getPhoneNumber=(pno)=>{
                 <Route exact path= '/' component={Home} exact ></Route>
                 <Route path='/serviceprovider' component={ServiceProvider}></Route>
                 <Route path='/service' component={HomeP}></Route>
-                <Route path='/admin' component={Admin} ></Route>
+                <Route path='/adminlogin' component={Adminfinal} ></Route>
                 <Route path='/login'>
                     <Final count={this.state.count} pno={this.state.pno} />
                 </Route>
-
+                <Route path='/admin' component={Admin} ></Route>
                 <Route path='/booking' component={Booking} exact></Route>
                 <Route path='/splogin'>
                     <Spfinal count={this.state.count} pno={this.state.pno} />

@@ -2,13 +2,14 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 
-export class Login extends React.Component {
+export class Adminlogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       fields: {},
       errors: {},
-      route : null,
+     
+      route : '/adminlogin',
       accessToken : null
     }
 
@@ -27,12 +28,12 @@ export class Login extends React.Component {
   }
 
 
-  async postData(){
+ async postData(){
 
     console.log("PostData called");
     const {username, password} = this.state.fields;
 
-    const res = await fetch("http://localhost:4000/login/loginuser",{
+    const res = await fetch("http://localhost:4000/login/adminlogin",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
@@ -41,6 +42,7 @@ export class Login extends React.Component {
         username,password
       })
     });
+    
 
     const data = await res.json();
     /*if(data.status(200)) {
@@ -58,21 +60,22 @@ export class Login extends React.Component {
       alert("Login successfull");
       console.log("Login Data : ",data," And accessToken : ",data.accessToken);
       this.setState({accessToken : data.accessToken});
-      this.setState({route : "/"});
+      this.setState({route : "/admin"});
     }
   }
+  
 
 
 
   submitLoginForm(e) {
     e.preventDefault();
-    
     if (this.validateForm()) {
+
       this.postData();
-        let fields = {};
-        fields["usernamez"] = "";
-        fields["password"] = "";
-        this.setState({fields:fields});
+      let fields = {};
+      fields["username"] = "";
+      fields["password"] = "";
+      this.setState({fields:fields});
        
     }
 
@@ -112,11 +115,11 @@ export class Login extends React.Component {
 
   render() {
 
-    if(this.state.route!="/"){
+    if(this.state.route=="/adminlogin"){
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Customer Login</div>
-        <form method="post" name="LoginForm"  onSubmit= {this.submitLoginForm}>
+        <div className="header">Admin Login</div>
+        <form method="post"  name="LoginForm"  onSubmit= {this.submitLoginForm} >
         <div className="content">
           <div className="form">
             <div className="form-group">
@@ -136,11 +139,12 @@ export class Login extends React.Component {
             Login
           </button>
         </div>
-        </form>
+        </form> 
       </div>
     );
-  }else {
-    return <Redirect to={{pathname:this.state.route,state:{accessToken : this.state.accessToken}}}/>;
-  }
+    }else {
+
+      return <Redirect to={{pathname:this.state.route,state:{accessToken : this.state.accessToken}}}/>;
+    }
   }
 }
