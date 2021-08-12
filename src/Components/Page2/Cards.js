@@ -1,45 +1,36 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
+import { Details } from '@material-ui/icons';
 
-function Cards() {
+class Cards extends React.Component {
+  constructor(props){
+    super(props);
+    
+  }
+  render(){
   return (
     <div className='cards'>
       <h1>Check out these service providers</h1>
-      <div className='cards__container'>
+      {this.props.details.map((item, index) => (
+        <div className='cards__container' key={index}>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
               src='images/plumber1.jpg'
               text='Good understanding to reach the most difficult parts of a system'
-              label='Jitendra Choudhary'
+              label={item.name}
               path='/booking'
-            />
-            <CardItem
-              src='images/plumber5.jpg'
-              text='Physically flexible to reach the most difficult/isolated parts of a system'
-              label='Aditya Patil'
-              path='/booking'
-            />
-          </ul>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/plumber3.jpg'
-              text='Top level knowledge in assembling, modifying and fixing plumbing system'
-              label='Shabad Khan'
-              path='/booking'
-            />
-            <CardItem
-              src='images/plumber4.jpg'
-              text='Demonstrated track record troubleshooting complex plumbing systems'
-              label='Amarita Desai'
-              path='/booking'
+              details={this.props.details}
             />
           </ul>
         </div>
       </div>
+    ))}
+      
     </div>
   );
+}
 }
 
 export default Cards;

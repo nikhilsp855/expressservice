@@ -4,12 +4,13 @@ import Cards from '../Components/Page2/Cards';
 import Footer from '../Components/Page2/Footer';
 import HeroSection from '../Components/Page2/HeroSection';
 
-function HomeP() {
+const HomeP=(props)=> {
+    console.log(props.details)
     return (
         <div>
             <Navbar/>
             <HeroSection/>
-            <Cards/>
+            <Cards details={props.details} />
             <Footer/>
         </div>
     )

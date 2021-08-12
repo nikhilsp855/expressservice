@@ -28,14 +28,14 @@ export class Spregister extends React.Component {
   async postData(){
 
     console.log("PostData called");
-    const {username, password, email, servname} = this.state.fields;
+    const {username, password, email, servname,city} = this.state.fields;
     const res = await fetch("http://localhost:4000/splogin/registerSP",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
-        username,password,email,servname,
+        username,password,email,servname,city,
         pno: this.props.pno
       })
     });
@@ -199,7 +199,7 @@ export class Spregister extends React.Component {
               <select className="city" name="city" value={this.state.fields.city} onChange={this.handleChange}>
                 <option value="Pune">Pune</option>
                 <option value="Mumbai">Mumbai</option>
-                <option value="BangaloreBlr">Bangalore</option>
+                <option value="Bangalore">Bangalore</option>
                 <option value="Delhi">Delhi</option>
                 <option selected value="select">--select--</option>
               </select>

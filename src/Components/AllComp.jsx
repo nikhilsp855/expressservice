@@ -16,7 +16,17 @@ constructor(){
     super();
         this.state={
             count: 0,
-            pno: ''
+            pno: '',
+            details:[
+                {
+
+                }
+            ],
+            customercart:[
+                {
+
+                }
+            ]
     }
 }
 
@@ -28,22 +38,38 @@ loadChangeafterOtp=(count)=>{
 getPhoneNumber=(pno)=>{
     this.setState({pno:pno})
 }
+
+getProviderDetails=(details)=>{
+    this.setState({details:details})
+    console.log(this.state.details)
+}
+
+customerCartDetails=(customercart)=>{
+    this.setState({customercart:customercart})
+    console.log(this.state.customercart)
+}
     render() {
 
         return <div>
             <Switch>
                 <Route path= '/verifyOtp'>
-                    <VerifyOtp loadChangeafterOtp={this.loadChangeafterOtp} getPhoneNumber={this.getPhoneNumber}/>
+                    <VerifyOtp loadChangeafterOtp={this.loadChangeafterOtp.bind(this)} getPhoneNumber={this.getPhoneNumber.bind(this)}/>
                 </Route>
-                <Route exact path= '/' component={Home} exact ></Route>
+                <Route path= '/' exact >
+                    <Home getProviderDetails={this.getProviderDetails.bind(this)}/>
+                </Route>
                 <Route path='/serviceprovider' component={ServiceProvider}></Route>
-                <Route path='/service' component={HomeP}></Route>
+                <Route path='/service' >
+                    <HomeP details={this.state.details} customerCartDetails={this.customerCartDetails.bind(this)}/>
+                </Route>
                 <Route path='/admin' component={Admin} ></Route>
                 <Route path='/login'>
                     <Final count={this.state.count} pno={this.state.pno} />
                 </Route>
 
-                <Route path='/booking' component={Booking} exact></Route>
+                <Route path='/booking' exact>
+                    <Booking customerCartDetails={this.customerCartDetails.bind(this)}/>
+                </Route>
                 <Route path='/splogin'>
                     <Spfinal count={this.state.count} pno={this.state.pno} />
                 </Route>

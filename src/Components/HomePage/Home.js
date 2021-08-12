@@ -11,6 +11,7 @@ import painter from './painting-contractors.jpg';
 import carpenter from './images.jpg';
 import electrician from './istockphoto-511990814-612x612.jpg';
 import Footer from '../Page2/Footer';
+import {withRouter} from "react-router-dom";
 
 function parseJwt (token) {
   var base64Url = token.split('.')[1];
@@ -27,6 +28,7 @@ export class HomeHeader extends React.Component {
   constructor(props) {
 
     super(props);
+    
   }
 
   render(){
@@ -61,7 +63,9 @@ class Home extends React.Component{
     super(props);
     this.state = {
       accessToken : this.props.location.state && this.props.location.state.accessToken,
-      payload : this.props.location.state && parseJwt(this.props.location.state.accessToken)
+      payload : this.props.location.state && parseJwt(this.props.location.state.accessToken),
+      city:'',
+      servicename:''
     }
   }
 
@@ -70,6 +74,42 @@ class Home extends React.Component{
     this.setState({accessToken:null,payload:null});
   }
 
+  async postData(){
+    console.log("PostData called");
+    const res = await fetch("http://localhost:4000/getserviceproviders",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        city:this.state.city,
+        service:this.state.servicename
+      })
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data.providers)
+      let itemList=data.providers;
+      const list=itemList.map(item=>{
+        return item.name;
+      })
+      console.log(list)
+      this.props.getProviderDetails(data.providers);
+      this.props.history.push("./service")
+    });
+  }
+
+   async getServices(e){
+     let servchange=e.target.innerText;
+     await this.setState({servicename:servchange})
+     console.log(this.state.servicename)
+     this.postData();
+   }
+   async handleChange(e){
+    let change=e.target.value
+    await this.setState({city:change})
+    console.log(this.state.city)
+  }
   render(){
 
     //console.log("In home accessToken = ",this.state.payload.name);
@@ -82,8 +122,14 @@ class Home extends React.Component{
         <HomeHeader payload={this.state.payload} logoutUser={this.logoutUser.bind(this)}/>
         
         <div className="search1">
-          <input className="search2" type="text" placeholder="search service"/>
-          <button className="btn1">Search</button>
+        <label>Select CIty</label>
+        <select className="city" name="city" onChange={this.handleChange.bind(this)} >
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Delhi">Delhi</option>
+                <option selected value="select">--select--</option>
+              </select>
         </div>
           
         <div className="cards1">
@@ -101,12 +147,12 @@ class Home extends React.Component{
             </div>
           </div>
           
-          <Link to="/service"><div className="card_s">
+          <div className="card_s">
             <img className="img_1" src={plumber} alt="Avatar"/>
              <div className="containers_text">
-            <h4 className="texts"><b>Plumber</b></h4>
+            <h4 className="texts" onClick={this.getServices.bind(this)}><b>Plumber</b></h4>
             </div> 
-          </div></Link>
+          </div>
           
           <div className="card_s">
             <img className="img_1" src={painter} alt="Avatar"/>
@@ -151,4 +197,4 @@ class Home extends React.Component{
     );
   }
 }
-export default Home;
+export default withRouter(Home);
