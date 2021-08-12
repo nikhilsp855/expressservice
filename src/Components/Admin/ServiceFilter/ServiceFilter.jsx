@@ -31,8 +31,9 @@ export default function ServiceFilter() {
 
   return (
     <div>
-      <div>
-        Search:<input type='text' value={q} onChange={(evt) => setQ(evt.target.value)} />
+      <div className='card card-header'>
+        Search:<input className='card card-header' type='text' value={q}
+         onChange={(evt) => setQ(evt.target.value)} style={{width:'20rem',height:'2rem'}}/>
       </div>
       <div>
         <Datatable data={search(data)} />

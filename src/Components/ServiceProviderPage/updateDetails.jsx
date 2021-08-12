@@ -64,7 +64,9 @@ export class updateDetails extends Component {
                                     <AddUser accessToken={this.state.accessToken}/>
                                 </Route>
                                 
-                                <Route path ='/serviceprovider/updateDetails/edit/:id' component = {EditUser}/>
+                                <Route path ='/serviceprovider/updateDetails/edit/:id'>
+                                    <EditUser accessToken={this.state.accessToken}/>
+                                </Route>
                             </Switch>
                         </BrowserRouter>
                     </GlobalProvider> 

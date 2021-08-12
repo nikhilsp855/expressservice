@@ -24,14 +24,40 @@ async function getSubServices(accessToken) {
 }
 
 
+
+
 export const UserList = (props) => {
-    const {removeUser} =useContext(GlobalContext);
+    //const {removeUser} =useContext(GlobalContext);
     const [users, setData] = useState([]);
+   // var temp=[];
     //const users = getSubServices(props.accessToken);
     useEffect(() => {
         getSubServices(props.accessToken)
-          .then((response) => setData(response));
-      }, []);
+          .then((response) => {
+              setData(response);
+             
+            });
+    }, []);
+
+    async function removeUser(accessToken,id) {
+
+        await fetch("http://localhost:4000/serviceproviders/updateDetails/deleteSubService",{
+                method : "POST",
+                headers : {
+                    "Authorization":"Bearer "+accessToken,
+                    "Content-Type" : "application/json" 
+                },
+                body : JSON.stringify({
+                    id : id
+                })
+        })
+            .then(()=>{
+                
+                getSubServices(accessToken)
+                    .then((response)=>setData(response));
+                //UserList({accessToken : accessToken});
+            })
+    }
 
     return (
         <ListGroup className='mt-4'>
@@ -45,7 +71,7 @@ export const UserList = (props) => {
                         <Link className="btn btn-warning " 
                         to={`/serviceprovider/updateDetails/edit/${user.id}`}>Edit</Link>
 
-                        <Button onClick = {()=>removeUser(user.id)}
+                        <Button onClick = {()=>removeUser(props.accessToken,user.id)}
                         className='btn btn-danger '>Delete</Button>
                     </div>
                 </ListGroupItem>
