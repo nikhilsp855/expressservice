@@ -1,16 +1,86 @@
 import React, { Component } from 'react'
 export default class NewRequests extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             current:[],                     //Deleted Item is stored here
-            customers:[
+            customers:[]
+            /*[
                 {id:'100',name:'Emma',service:'Motor Installation',date:'06/06/2021',contact:'12345',},
                 {id:'100',name:'Max',service:'Wash Basin Installation',date:'06/06/2021',contact:'12345',},
                 {id:'100',name:'Peter',service:'Water Tank Installation',date:'06/06/2021',contact:'12345',},
-            ]
+            ]*/
         }
+    }
+
+    async componentDidMount() {
+
+        this.getPendingCustomerList(this.props.accessToken)
+          .then(elements => this.setState({ customers:elements }))
+          .catch(e => console.log(e));
+    }
+
+    async getPendingCustomerList(accessToken){
+
+        console.log("getPendingCustomerList called");
+        console.log("accessToken : ",accessToken);
+    
+    
+        const res = await fetch("http://localhost:4000/serviceproviders/pendingCustomer",{
+          method : "GET",
+          headers : {
+            "Authorization":"Bearer "+accessToken
+          }
+        });
+    
+        const data = await res.json();
+        /*if(data.status(200)) {
+    
+          alert("Login successfull");
+          console.log("Login successfull")
+        }else if(data.status(202)) {
+    
+          alert("Login unsuccessfull");
+          console.log("Login unsuccessfull")
+        }*/
+    
+        if(data) {
+    
+            console.log("data.pendingCustomerList = ",data.pendingCustomerList);
+            return data.pendingCustomerList;
+        
+        }
+        return [];
+    }
+
+    async removeCustomer(accessToken,id) {
+
+        await fetch("http://localhost:4000/serviceproviders/pendingCustomer/removeCustomer",{
+                method : "POST",
+                headers : {
+                    "Authorization":"Bearer "+accessToken,
+                    "Content-Type" : "application/json" 
+                },
+                body : JSON.stringify({
+                    id : id
+                })
+        })
+    }
+
+    async addCustomer(accessToken,newUser) {
+
+        console.log("newUser at addSubService = ",newUser)
+        await fetch("http://localhost:4000/serviceproviders/addCustomer",{
+                method : "POST",
+                headers : {
+                    "Authorization":"Bearer "+accessToken,
+                    "Content-Type" : "application/json" 
+                },
+                body : JSON.stringify({
+                    newCustomer : newUser
+                })
+        });
     }
 
     onAccept(item) {
@@ -18,7 +88,12 @@ export default class NewRequests extends Component {
             current:  prevState.customers.filter(p => p === item),       //Deleted Item is set here
           customers: prevState.customers.filter(p => p !== item)         //item is deleted => new list
         }), 
-        () => console.log("Deleted Item",this.state.current));     
+        () => console.log("Deleted Item",this.state.current));
+         
+
+        this.removeCustomer(this.props.accessToken,item.id);
+        this.addCustomer(this.props.accessToken,item);
+            
         
     }
 
@@ -29,6 +104,8 @@ export default class NewRequests extends Component {
         }), 
         () => console.log("Deleted Item",this.state.current));     
         
+        this.removeCustomer(this.props.accessToken,item.id);
+
       }
 
     render() {
