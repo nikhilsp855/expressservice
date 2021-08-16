@@ -4,12 +4,86 @@ import profile from './images/profile.jpg'
 
 export class ServiceHeader extends React.Component {
 
-	state = {
-		profileImg: profile,
-		ServiceTitle: 'Choudhary Furnitures'
+	constructor(props) {
+	
+		super(props);
+		this.state = {
+			profileImg: profile,
+			ServiceTitle: 'Name of Your Store',
+			slogan : 'Slogan for your store'
+		}
 	}
 
+	changeProfilePic(profilePic) {
+
+		this.setState({profileImg : profilePic});
+	}
+
+	changeServiceTitle(serviceTitle) {
+		
+		this.setState({ServiceTitle : serviceTitle});
+	}
+
+	changeSlogan(slogan) {
+
+		this.setState({slogan : slogan});
+	}
+
+	async componentDidMount() {
+
+		this.getProfileImage(this.props.accessToken)
+          .then(image => this.setState({ profileImg:image}))
+          .catch(e => console.log(e));
+
+		this.getStoreNameAndSlogan(this.props.accessToken)
+			.then(data => this.setState({ServiceTitle : data.data.storeName, slogan : data.data.slogan}))
+			.catch(e => console.log(e));
+
+	}
+
+	async getProfileImage(accessToken){
 	
+		const res = await fetch("http://localhost:4000/serviceproviders/updateDetails/retrieveImage",{
+		  method : "GET",
+		  headers : {
+			"Authorization":"Bearer "+accessToken
+		  }
+		})
+
+		const data = await res.json();
+    
+
+    	if(data) {
+
+        	//console.log("data.customerList = ",data.customerList);
+        	return data.imageUrl;
+    
+    	}
+    	return profile;
+	}
+
+	async getStoreNameAndSlogan(accessToken){
+	
+		const res = await fetch("http://localhost:4000/serviceproviders/updateDetails/getStoreNameAndSlogan",{
+		  method : "GET",
+		  headers : {
+			"Authorization":"Bearer "+accessToken,
+			"Content-Type" : "application/json"
+		  }
+		})
+
+		const data = await res.json();
+    
+
+    	if(data) {
+
+        	console.log("data = ",data);
+        	return data;
+    
+    	}
+		console.log("helllll");
+    	return {storeName : "",slogan : ""};
+	}
 
     render() {
         return <div> 
@@ -17,7 +91,7 @@ export class ServiceHeader extends React.Component {
             
                 <h2 className='companyName'>Express Service</h2>
                 <h1 className='sph1'><b>{this.state.ServiceTitle}</b></h1>
-		        <h3 className='sph3'>We build, We decorate, We innovate</h3>
+		        <h3 className='sph3'>{this.state.slogan}</h3>
 				
                 <img src={ this.state.profileImg } alt="profile image" className='spImage'/>
 	        </div>
