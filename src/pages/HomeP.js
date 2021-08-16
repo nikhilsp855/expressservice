@@ -9,7 +9,7 @@ const HomeP=(props)=> {
     return (
         <div>
             <Navbar/>
-            <HeroSection/>
+            
             <Cards details={props.details} />
             <Footer/>
         </div>
