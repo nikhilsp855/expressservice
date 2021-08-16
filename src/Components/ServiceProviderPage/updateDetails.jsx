@@ -12,11 +12,14 @@ import { GlobalProvider } from './UpdateDetailsComp/Context/GlobalState'
 export class updateDetails extends Component {
     
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             profileImg: profile,
             accessToken: this.props.accessToken
-        }
+        };
+
+        this.storeNameRef = React.createRef();
+        this.sloganNameRef = React.createRef();
     }
     
 
@@ -24,15 +27,113 @@ export class updateDetails extends Component {
     //     this.setState({profileImg : val})
     // }
 
+   /* async uploadImage(reader) {
+
+        await fetch("http://localhost:4000/serviceproviders/updateDetails/uploadImage",{
+                method : "POST",
+                headers : {
+                    "Authorization":"Bearer "+this.state.accessToken,
+                    "Content-Type" : "application/json" 
+                },
+                body : new FormData().append('file',reader.result)
+        });
+
+    }*/
+
+/*
     imageHandler = (evt) => {
         const reader = new FileReader();
         reader.onload = () =>{
           if(reader.readyState === 2){
-            this.setState({profileImg: reader.result})
+            this.setState({profileImg: reader.result});
+
+            //this.uploadImage(reader);
+            
+            //console.log("reader.result = ",reader.result);
           }
         }
         reader.readAsDataURL(evt.target.files[0])
       };
+*/
+
+
+      addFile(event) {
+        var formData = new FormData();
+
+
+        const reader = new FileReader();
+        reader.onload = () =>{
+          if(reader.readyState === 2){
+            this.setState({profileImg: reader.result});
+
+            //this.uploadImage(reader);
+            
+            //console.log("reader.result = ",reader.result);
+            this.props.changeProfileImage(reader.result);
+          }
+        }
+        reader.readAsDataURL(event.target.files[0]);
+
+        
+
+
+
+        formData.append("file", event.target.files[0]);
+        //formData.append('name', 'some value user types');
+        //formData.append('description', 'some value user types');
+        //console.log("event.target.files[0] = ",event.target.files[0]);
+    
+        fetch("http://localhost:4000/serviceproviders/updateDetails/uploadImage", {
+            method: 'POST',
+            headers: {
+                "Authorization":"Bearer "+this.state.accessToken
+                //'Content-Type': 'multipart/form-data'
+            },
+            body: formData
+        })
+        /*.then((response) => response.json())
+        .then((data) => {
+            this.setState({images: data.images, isLoading: false});
+            this.props.updateImages(data.images);
+        })
+        .catch(error => this.setState({error, isLoading: false}));*/
+    }
+    
+    setStoreName() {
+
+        fetch("http://localhost:4000/serviceproviders/updateDetails/setStoreName", {
+            method : 'POST',
+            headers : {
+                "Authorization":"Bearer "+this.state.accessToken,
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                storeName : this.storeNameRef.current.value
+            })       
+        })
+        
+        this.props.changeServiceTitle(this.storeNameRef.current.value);
+    }
+
+    setSloganName() {
+
+        //console.log("this.sloganNameRef.current.value = ",this.sloganNameRef.current.value);
+        fetch("http://localhost:4000/serviceproviders/updateDetails/setSloganName", {
+            method : 'POST',
+            headers : {
+                "Authorization":"Bearer "+this.state.accessToken,
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                slogan : this.sloganNameRef.current.value
+            })       
+        })
+
+        this.props.changeSlogan(this.sloganNameRef.current.value);
+        
+        //console.log("after");
+    }
+
 
     render() {
 
@@ -44,9 +145,29 @@ export class updateDetails extends Component {
                     <div className="img-holder">
                         <img src={ this.state.profileImg } alt="profile image" className='spImage'/>         
                      </div>
-                    <input type="file" name='Image-upload' id='inp-img' accept='/image/*.jpg' 
-                    onChange={this.imageHandler} />
+                  { /* <input type="file" name='Image-upload' id='inp-img' accept='/image/*.jpg' 
+                    onChange={this.imageHandler} />*/}
                 </div>
+
+                
+                <div>
+                    <form encType="multipart/form-data" action="">
+                        <input id="id-for-upload-file" onChange={this.addFile.bind(this)} type="file"/>
+                    </form>
+                </div>
+
+                <div>
+
+                    <input type="text" placeholder="Enter Store name" ref={this.storeNameRef}/>
+                    <button onClick={this.setStoreName.bind(this)}>Submit</button>
+                </div>
+
+                <div>
+
+                    <input type="text" placeholder="Enter Slogan for your store" ref={this.sloganNameRef}/>
+                    <button onClick={this.setSloganName.bind(this)}>Submit</button>
+                </div>
+
                 {/* <button onClick={()=>{this.props.data.updateImg(this.state.profileImg)}}>Change Image</button> */}
                 {/* <PreviewImg data={
                     {previmg : this.state.profileImg ,
