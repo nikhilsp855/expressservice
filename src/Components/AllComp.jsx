@@ -51,6 +51,7 @@ customerCartDetails=(customercart)=>{
     console.log(this.state.customercart)
 }
     render() {
+   
 
         return <div>
             <Switch>
@@ -75,6 +76,7 @@ customerCartDetails=(customercart)=>{
                 <Route path='/splogin'>
                     <Spfinal count={this.state.count} pno={this.state.pno} />
                 </Route>
+                
             </Switch>    
             
         </div>
