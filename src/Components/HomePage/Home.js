@@ -74,11 +74,12 @@ class Home extends React.Component{
     this.setState({accessToken:null,payload:null});
   }
 
-  async postData(){
+  async postData(accessToken){
     console.log("PostData called");
     const res = await fetch("http://localhost:4000/getserviceproviders",{
       method : "POST",
       headers : {
+        "Authorization":"Bearer "+accessToken,
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
@@ -103,7 +104,7 @@ class Home extends React.Component{
      let servchange=e.target.innerText;
      await this.setState({servicename:servchange})
      console.log(this.state.servicename)
-     this.postData();
+     this.postData(this.state.accessToken);
    }
    async handleChange(e){
     let change=e.target.value

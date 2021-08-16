@@ -2,8 +2,8 @@ import React from 'react'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { useCart } from "react-use-cart"
 
-const MyCart = () => {
-
+const MyCart = (props) => {
+   console.log(props.providers)
     const {
         isEmpty,
         totalUniqueItems,
@@ -15,7 +15,11 @@ const MyCart = () => {
         emptyCart
 
     } = useCart();
+ 
 
+   function book(){
+     console.log("HIIH")
+    }
     if (isEmpty) return <h1 className="text-center">Your Cart is Empty</h1>
     return (
         <section className="py-4 container">
@@ -68,7 +72,7 @@ const MyCart = () => {
                         onClick={()=>emptyCart()}
                     >Clear Cart</button>
 
-                    <button className="btn btn-primary m-2">Book Now</button>
+                    <button className="btn btn-primary m-2" onClick={book}>Book Now</button>
                 </div>
             </div>
         </section>

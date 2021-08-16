@@ -22,7 +22,7 @@ subservices=()=>{
       this.props.history.push(
       {
         pathname:"/booking",
-        state:{detailss:itemLists}
+        state:{detailss:itemLists, providers:this.props.label}
     })
     }
   })
