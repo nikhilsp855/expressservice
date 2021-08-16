@@ -45,7 +45,7 @@ export class ServiceBody extends React.Component {
                                     <CustomerList accessToken={this.state.accessToken}/>
                                 </Route>
                                 <Route path='/serviceprovider/updateDetails'>
-                                    <UpdateDetails accessToken={this.state.accessToken}/>
+                                    <UpdateDetails accessToken={this.state.accessToken} changeProfileImage={this.props.changeProfileImage} changeServiceTitle={this.props.changeServiceTitle} changeSlogan={this.props.changeSlogan}/>
                                 </Route>
                                 <Route path='/serviceprovider/trendingItems' component={TrendingItems}></Route>
                                 <Route path='/serviceprovider/newrequests'>

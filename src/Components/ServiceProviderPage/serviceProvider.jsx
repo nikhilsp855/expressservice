@@ -10,15 +10,28 @@ export class ServiceProvider extends React.Component {
         super(props);
         this.state = {
           accessToken : this.props.location.state && this.props.location.state.accessToken
-        }
+        };
+        this.headerRef = React.createRef();
+    }
+
+    changeProfileImage(profilePic) {
+        this.headerRef.current.changeProfilePic(profilePic);
+    }
+
+    changeServiceTitle(serviceTitle) {
+        this.headerRef.current.changeServiceTitle(serviceTitle);
+    }
+
+    changeSlogan(slogan) {
+        this.headerRef.current.changeSlogan(slogan);
     }
 
     render() {
 
         return <div>
 
-            <ServiceHeader/>
-            <ServiceBody accessToken={this.state.accessToken}/>
+            <ServiceHeader accessToken={this.state.accessToken} ref={this.headerRef}/>
+            <ServiceBody accessToken={this.state.accessToken} changeProfileImage={this.changeProfileImage.bind(this)} changeServiceTitle={this.changeServiceTitle.bind(this)} changeSlogan={this.changeSlogan.bind(this)}/>
             <ServiceFooter/>
         </div>
     }
