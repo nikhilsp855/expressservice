@@ -3,7 +3,7 @@ import { Switch, Link, Route} from 'react-router-dom';
 import Home from './HomePage/Home';
 import HomeP from '../pages/HomeP';
 import { ServiceProvider } from './ServiceProviderPage/serviceProvider';
-import Admin from './Admin';
+import { Admin } from './Admin';
 import Final from './Login_register/final';
 import VerifyOtp from './Otp/verifyOtp';
 
