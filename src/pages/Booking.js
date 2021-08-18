@@ -23,10 +23,9 @@ const Booking=()=> {
 
             <CartProvider>
             <Cart states={state1} providers={providers}/>
-            <MyCart providers={providers}/>
             </CartProvider>
 
-            <Footer/>
+            
             
         </div>
     )
