@@ -12,6 +12,7 @@ import carpenter from './images.jpg';
 import electrician from './istockphoto-511990814-612x612.jpg';
 import Footer from '../Page2/Footer';
 import {withRouter} from "react-router-dom";
+import HeroSection from '../Page2/HeroSection';
 
 function parseJwt (token) {
   var base64Url = token.split('.')[1];
@@ -117,18 +118,20 @@ class Home extends React.Component{
       marginTop:"0px",
     };
     return (
-      <div className='hmbody'>
+      <>
         
         <HomeHeader payload={this.state.payload} logoutUser={this.logoutUser.bind(this)}/>
+        <HeroSection/>
         
         <div className="search1">
-        <label>Select CIty</label>
+        <p className="label1">Where do you need a service?</p>
         <select className="city" name="city" onChange={this.handleChange.bind(this)} >
+        <option selected value="select">Select City</option>
+
                 <option value="Pune">Pune</option>
                 <option value="Mumbai">Mumbai</option>
                 <option value="Bangalore">Bangalore</option>
                 <option value="Delhi">Delhi</option>
-                <option selected value="select">--select--</option>
               </select>
         </div>
           
@@ -193,7 +196,7 @@ class Home extends React.Component{
         <Footer/>
         </div>
         <a href="/adminlogin">Admin Login</a>
-      </div>
+      </>
     );
   }
 }
