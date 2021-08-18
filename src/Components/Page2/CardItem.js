@@ -12,6 +12,7 @@ subservices=()=>{
   let details=this.props.label
   console.log(this.props.details)
   console.log(this.props.label)
+  console.log(this.props.src)
 
   let itemList=this.props.details.map((item)=>{
     if(item.name===this.props.label)

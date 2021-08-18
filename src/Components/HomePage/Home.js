@@ -137,14 +137,14 @@ class Home extends React.Component{
           <div className="card_s">
             <img className="img_1" src={grooming} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Grooming</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Grooming</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={appliance} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Repair</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Repair</b></h4> 
             </div>
           </div>
           
@@ -158,35 +158,35 @@ class Home extends React.Component{
           <div className="card_s">
             <img className="img_1" src={painter} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Painters</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Painters</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={pest} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Pest Control</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Pest Control</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={cleaning} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Cleaning</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Cleaning</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={carpenter} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Carpenter</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Carpenter</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={electrician} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Electrician</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Electrician</b></h4> 
             </div>
           </div>
         </div>

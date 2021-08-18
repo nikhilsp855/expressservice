@@ -7,11 +7,11 @@ const FormBooking=()=> {
     const[providers,setProvider]=useState();
     const[price,setPrice]=useState();
     const[name,setName]=useState();
-    const[number,setNumber]=useState();
+    const[contact,setNumber]=useState();
     const[address,setAddress]=useState();
     const[date,setDate]=useState();
     const[time,setTime]=useState();
-    const[services,setService]=useState([]);
+    const[service,setService]=useState([]);
     useEffect(() => {
         console.log(location.pathname); 
         console.log(location.state.price); 
@@ -56,15 +56,15 @@ const FormBooking=()=> {
       },
       body : JSON.stringify({
         providers:providers,
-        pendingCustomers:[{
+        pendingCustomers:{
             name,
             address,
             date,
             price,
-            services,
-            number,
+            service,
+            contact,
             time
-        }]
+        }
       })
     })
     }

@@ -90,7 +90,7 @@ export default class NewRequests extends Component {
         }), 
         () => console.log("Deleted Item",this.state.current));
          
-
+        console.log(item.id)
         this.removeCustomer(this.props.accessToken,item.id);
         this.addCustomer(this.props.accessToken,item);
             
@@ -117,7 +117,7 @@ export default class NewRequests extends Component {
                     <div className='d-flex accept-deny-list rounded'>
                         <p class='accept-deny-list-item'> <b>Customer Name </b> : {customer.name}   </p>
                         <p class='accept-deny-list-item'> <b>Service Requirement:</b>  {customer.service}  </p>
-                        <p class='accept-deny-list-item'> <b>On Date :</b>  {customer.date}   </p>
+                        <p class='accept-deny-list-item'> <b>On Date :</b>  {customer.date} {customer.time}  </p>
                         <p class='accept-deny-list-item'> <b>Contact :</b>  {customer.contact}   </p>
                         <button className='btn btn-success mt-5 '  
                         onClick={() => this.onAccept(customer)}  >Accept </button>
