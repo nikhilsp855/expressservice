@@ -84,6 +84,7 @@ export class CustomerList extends React.Component {
                         <h4 className='sph4'>{this.state.customers[i].name}</h4>
                         <p>{this.state.customers[i].address}</p>
                         <p>{this.state.customers[i].date}</p>
+                        <p>{this.state.customers[i].time}</p>
                     </div>
                     <div className="col-md-1">
 

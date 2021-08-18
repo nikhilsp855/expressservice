@@ -75,11 +75,12 @@ class Home extends React.Component{
     this.setState({accessToken:null,payload:null});
   }
 
-  async postData(){
+  async postData(accessToken){
     console.log("PostData called");
     const res = await fetch("http://localhost:4000/getserviceproviders",{
       method : "POST",
       headers : {
+        "Authorization":"Bearer "+accessToken,
         "Content-Type" : "application/json"
       },
       body : JSON.stringify({
@@ -104,7 +105,7 @@ class Home extends React.Component{
      let servchange=e.target.innerText;
      await this.setState({servicename:servchange})
      console.log(this.state.servicename)
-     this.postData();
+     this.postData(this.state.accessToken);
    }
    async handleChange(e){
     let change=e.target.value
@@ -139,14 +140,14 @@ class Home extends React.Component{
           <div className="card_s">
             <img className="img_1" src={grooming} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Grooming</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Grooming</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={appliance} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Repair</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Repair</b></h4> 
             </div>
           </div>
           
@@ -160,35 +161,35 @@ class Home extends React.Component{
           <div className="card_s">
             <img className="img_1" src={painter} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Painters</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Painters</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={pest} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Pest Control</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Pest Control</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={cleaning} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Cleaning</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Cleaning</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={carpenter} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Carpenter</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Carpenter</b></h4> 
             </div>
           </div>
           
           <div className="card_s">
             <img className="img_1" src={electrician} alt="Avatar"/>
             <div className="containers_text">
-              <h4><b>Electrician</b></h4> 
+              <h4 className="texts" onClick={this.getServices.bind(this)}><b>Electrician</b></h4> 
             </div>
           </div>
         </div>

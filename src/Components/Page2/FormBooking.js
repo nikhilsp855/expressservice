@@ -1,7 +1,73 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {useLocation} from "react-router-dom";
 import './FormBooking.css'
+const FormBooking=()=> {
+    let location = useLocation();
+    const[item,setState]=useState([{}]);
+    const[providers,setProvider]=useState();
+    const[price,setPrice]=useState();
+    const[name,setName]=useState();
+    const[contact,setNumber]=useState();
+    const[address,setAddress]=useState();
+    const[date,setDate]=useState();
+    const[time,setTime]=useState();
+    const[service,setService]=useState([]);
+    useEffect(() => {
+        console.log(location.pathname); 
+        console.log(location.state.price); 
+        console.log(location.state.providers);
+        console.log(location.state.item);
+        setState(location.state.item);
+        location.state.item.map((i)=>{
+            setService(i.title);
+        })
+        setProvider(location.state.providers)
+        setPrice(location.state.price)
+     }, [location]);
 
-function FormBooking() {
+     const onNamechange=(e)=>{
+         let custname=e.target.value;
+          setName(custname);
+     }
+     const onNumberChange=(e)=>{
+        let custnumber=e.target.value;
+         setNumber(custnumber);
+    }
+    const onAddressChange=(e)=>{
+        let custaddress=e.target.value;
+         setAddress(custaddress);
+    }
+    const onDateChange=(e)=>{
+        let custdate=e.target.value;
+         setDate(custdate);
+    }
+    const onTimeChange=(e)=>{
+        let custtime=e.target.value;
+         setTime(custtime)
+    }
+
+    
+    const confirmBooking=(e)=>{
+        e.preventDefault();
+     fetch("http://localhost:4000/confirmbooking",{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify({
+        providers:providers,
+        pendingCustomers:{
+            name,
+            address,
+            date,
+            price,
+            service,
+            contact,
+            time
+        }
+      })
+    })
+    }
     return (
         <div>
             <div className="container2">
@@ -20,36 +86,31 @@ function FormBooking() {
                         </ul>
                     </div>
                     <div className="form2">
-                        <form>
+                        <form onSubmit={confirmBooking}>
                             <div className="inpbox">
                                 Full Name:
                                 <span className="flaticon-user"></span>
 
-                                <input type="text" placeholder="Enter Full Name" />
+                                <input type="text" placeholder="Enter Full Name" onChange={onNamechange}/>
                             </div>
 
-                            <div className="inpbox">
-                                Email:
-                                <span className="flaticon-email"></span>
-                                <input type="email" placeholder="Enter Email ID" />
-                            </div>
 
                             <div className="inpbox">
                                 Mobile:
                                 <span className="flaticon-mobile"></span>
-                                <input type="text" placeholder="Enter Contact no" />
+                                <input type="text" placeholder="Enter Contact no" onChange={onNumberChange} />
                             </div>
 
                             <div className="inpbox">
                                 Address:
                                 <span className="address"></span>
-                                <input type="text" placeholder="Enter Location" />
+                                <input type="text" placeholder="Enter Location" onChange={onAddressChange}/>
                             </div>
 
                             <div className="inpbox">
                                 Choose Date:
                                 <span className="flaticon-calendar"></span>
-                                <input type="date" placeholder="Booking Date" />
+                                <input type="date" placeholder="Booking Date" onChange={onDateChange} />
                             </div>
 
 
@@ -58,12 +119,12 @@ function FormBooking() {
                             <div className="inpbox full">
                                 Time Slot:
                                 <span className="flaticon-slot"></span>
-                                <select id="timeslot" name="timeslot">
+                                <select id="timeslot" name="timeslot" onChange={onTimeChange} >
                                     <option value="">&nbsp; &nbsp;Select Time</option>
-                                    <option value="t1">&nbsp; &nbsp;08:00AM-9:30AM</option>
-                                    <option value="t2">&nbsp; &nbsp;11:00AM-12:30PM</option>
-                                    <option value="t3">&nbsp; &nbsp;01:30PM-03:00PM</option>
-                                    <option value="t4">&nbsp; &nbsp;03:30PM-05:00PM</option>
+                                    <option value="08:00AM-9:30AM">&nbsp; &nbsp;08:00AM-9:30AM</option>
+                                    <option value="11:00AM-12:30PM">&nbsp; &nbsp;11:00AM-12:30PM</option>
+                                    <option value="01:30PM-03:00PM">&nbsp; &nbsp;01:30PM-03:00PM</option>
+                                    <option value="03:30PM-05:00PM">&nbsp; &nbsp;03:30PM-05:00PM</option>
                                 </select>
                             </div>
 
