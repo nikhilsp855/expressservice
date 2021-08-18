@@ -2,7 +2,6 @@ import React from 'react'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {useCart} from "react-use-cart"
 const Itemcard = (props) => {
-
     const {addItem}=useCart();
     return (
         <div className="col-11 col-md-6 col-lg-3 mx-0 mb-4">
@@ -21,5 +20,5 @@ const Itemcard = (props) => {
         </div>
     )
 }
-
 export default Itemcard
+

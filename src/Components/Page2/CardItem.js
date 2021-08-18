@@ -12,6 +12,7 @@ subservices=()=>{
   let details=this.props.label
   console.log(this.props.details)
   console.log(this.props.label)
+  console.log(this.props.src)
 
   let itemList=this.props.details.map((item)=>{
     if(item.name===this.props.label)
@@ -22,7 +23,7 @@ subservices=()=>{
       this.props.history.push(
       {
         pathname:"/booking",
-        state:{detailss:itemLists}
+        state:{detailss:itemLists, providers:this.props.label}
     })
     }
   })

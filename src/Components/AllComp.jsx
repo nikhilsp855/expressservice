@@ -12,6 +12,7 @@ import Booking from '../pages/Booking';
 
 import Spfinal from './Login_register/spfinal';
 import Adminfinal from './Login_register/adminfinal';
+import FormBooking from './Page2/FormBooking';
 
 export class AllComp extends React.Component {
 constructor(){
@@ -76,7 +77,7 @@ customerCartDetails=(customercart)=>{
                 <Route path='/splogin'>
                     <Spfinal count={this.state.count} pno={this.state.pno} />
                 </Route>
-                
+                <Route path='/confirmbooking' component={FormBooking} ></Route>
             </Switch>    
             
         </div>

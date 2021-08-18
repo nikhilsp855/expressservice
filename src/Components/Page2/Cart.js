@@ -5,8 +5,7 @@ import data1 from './data1'
 
 const Cart = (props) => {
     console.log(props.states)
-    //var providerdetails=props;
-   // console.log(providerdetails.length)
+   console.log(props.providers)
    var count=1;
     props.states.map((item)=>{
         item.id=count;
@@ -26,7 +25,7 @@ const Cart = (props) => {
                 {options.map((item,index)=>{
                     console.log(item)
                     return(
-                        <Itemcard img={item.img} title={item.title} desc={item.desc} price={item.price} item={item} key={index}/>
+                        <Itemcard img={item.img} title={item.title} desc={item.desc} price={item.price} item={item} providers={props.providers} key={index}/>
 
                     )
                 })}
