@@ -9,7 +9,7 @@ const Itemcard = (props) => {
                 <img src='images/washbasin.jpg' class="card=img-top img-fluid"/>
                 <div class="card-body text-center">
                     <h5 class="card-title">{props.title}</h5>
-                    <h5 class="card-title">₹{props.price}</h5>
+                    <h5 class="card-title">INR {props.price}</h5>
                     <button class="btn btn-success"
                     onClick={()=>addItem(props.item)}
                     >Add to Cart</button>

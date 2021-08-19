@@ -9,9 +9,9 @@ function Navbar() {
 
     return (
         <>
-            <nav className="navbar">
-                <div className="navbar-container">
-                    <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            <nav className="headerbar">
+                <div className="headerbarcontainer">
+                    <Link to="/" className="headerbarlogo" onClick={closeMobileMenu}>
                     <img className="company-logo" style={{height:80}} src="/images/logo1.png" alt="logo"/>
                     </Link>
                     <div className="menu-icon" onClick={handleClick}>
