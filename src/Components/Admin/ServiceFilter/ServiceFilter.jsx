@@ -5,39 +5,92 @@ import './datastyle.css';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-export default function ServiceFilter() {
-  const [data, setData] = useState([                              //customer data
-    {"id":"101","name":"Ammar Habib","Username":"Ammar","email":"Ammar@bazinga.com","Contact":"99745"},
-    {"id":"102","name":"Ishwar More","Username":"Ishwar","email":"Ishwar@bazinga.com","Contact":"99745"},
-    {"id":"103","name":"Kshitij Patil","Username":"Kshitij","email":"Kshitij@bazinga.com","Contact":"99745"},
-    {"id":"104","name":"Manish Choudhary","Username":"Manish","email":"Manish@bazinga.com","Contact":"99745"},
-    {"id":"105","name":"Nikhil Patil","Username":"Nikhil","email":"Nikhil@bazinga.com","Contact":"99745"},
+async function getServiceProvidersList(accessToken){
 
-  ]);              
-  const [q, setQ] = useState('');
+  const res = await fetch("http://localhost:4000/serviceProviders/getSPList",{
+          method : "GET",
+          headers : {
+            "Authorization":"Bearer "+accessToken,
+            "Content-Type" : "application/json"
+          }
+        });
+    
+        const data = await res.json();
+        console.log("data.SPList = ",data.SPList);
+        
+    
+        if(data) {
+    
+            //console.log("data.pendingCustomerList = ",data.pendingCustomerList);
+            return data.SPList;
+        
+        }
+        return [];
+}
 
+export class ServiceFilter extends React.Component {
 
-  useEffect(() => {
-    fetch('https://swapi.dev/api/people')
-      .then((response) => response.json())
-      .then((json) => setData(json.results));
-  }, []);
+  constructor(props) {
 
-
-// Searching by firstname
-  function search(rows) {
-      return rows.filter(row => row.name.toLowerCase().indexOf(q)> -1)
+    super(props);
+    this.state = {
+      data : [],
+      q : 0
+    }
   }
 
+  setData(data) {
+    this.setState({data : data});
+    //console.log("this.state.data = ",this.state.data)
+  }
+
+  async reFetch() {
+
+    await getServiceProvidersList(this.props.accessToken)
+      .then((result) => this.setData(result));
+  }
+
+  
+async componentDidMount() {
+
+  await getServiceProvidersList(this.props.accessToken)
+    .then((result) => this.setData(result));
+}
+
+
+  render() {
   return (
-    <div>
-      <div className='card card-header'>
-        Search:<input className='card card-header' type='text' value={q}
-         onChange={(evt) => setQ(evt.target.value)} style={{width:'20rem',height:'2rem'}}/>
-      </div>
-      <div>
-        <Datatable data={search(data)} />
-      </div>
+
+    <div class='table-style' >
+      
+      <table cellPadding={0} cellSpacing={0} 
+        class="table table-hover table-bordered ">
+        
+        <thead>
+          <tr class="table-dark">
+            {/* {data[0] && columns.map((heading) => <th>{heading}</th>)} */}
+          </tr>
+        </thead>
+        <tbody className='table-success'>
+          <tr>
+            <th><h3>Name</h3></th>
+            <th><h3>Store Name</h3></th>
+            <th><h3>Email id</h3></th>
+            <th><h3>Service Name</h3></th>
+            <th><h3>City</h3></th>
+          </tr>
+          {this.state.data.map((row) => (
+            <tr key={row._id}>
+                <td>{row.name}</td>
+                <td>{row.storeName}</td>
+                <td>{row.email}</td>
+                <td>{row.servname}</td>
+                <td>{row.city}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
+  }
 }

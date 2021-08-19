@@ -7,16 +7,22 @@ import './admin-pages.css';
 import Footer from '../../Components/Page2/Footer';
 
 export default class Stats extends Component {
+
+    constructor(props) {
+
+        super(props);
+    }
+
     render() {
         return (
             <div id='stats-style'>
                 <h1 className="card c card-header color dark">Stats</h1>
                 <h2 className="card card-header">Bar Chart</h2>
-                <Barchart/>
+                <Barchart accessToken={this.props.accessToken}/>
                 <h2 className="card  card-header">Line Chart</h2>
-                <Linechart/>
+                <Linechart accessToken={this.props.accessToken}/>
                 <h2 className="card card-header">Pie Chart</h2>
-                <Piechart/>
+                <Piechart accessToken={this.props.accessToken}/>
                 <Footer/>
             </div>
         )
