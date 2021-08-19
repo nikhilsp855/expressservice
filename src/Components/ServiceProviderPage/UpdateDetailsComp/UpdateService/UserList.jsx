@@ -63,12 +63,12 @@ export const UserList = (props) => {
         <ListGroup className='mt-4'>
             {users.map(user=>(
 
-                <ListGroupItem className='d-flex'>
+                <ListGroupItem className='d-flex flex-column align-items-start'>
                     <strong>Service Name:     {user.name} </strong>
                     <strong>Service Cost:     {user.cost} Rs </strong>
                     <strong>Service time:     {user.time} days </strong>
-                    <div className='mt-auto'>
-                        <Link className="btn btn-warning " 
+                    <div className='mt-2'>
+                        <Link className="btn btn-warning mr-5" 
                         to={`/serviceprovider/updateDetails/edit/${user.id}`}>Edit</Link>
 
                         <Button onClick = {()=>removeUser(props.accessToken,user.id)}

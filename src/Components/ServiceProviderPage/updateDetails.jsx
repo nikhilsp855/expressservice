@@ -8,6 +8,7 @@ import { EditUser } from './UpdateDetailsComp/UpdateService/EditUser'
 import { BrowserRouter, Switch,Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { GlobalProvider } from './UpdateDetailsComp/Context/GlobalState'
+import './myStyle.css'
 
 export class updateDetails extends Component {
     
@@ -148,24 +149,27 @@ export class updateDetails extends Component {
                   { /* <input type="file" name='Image-upload' id='inp-img' accept='/image/*.jpg' 
                     onChange={this.imageHandler} />*/}
                 </div>
-
+                
+                <div className="updatedata">
                 
                 <div>
                     <form encType="multipart/form-data" action="">
-                        <input id="id-for-upload-file" onChange={this.addFile.bind(this)} type="file"/>
+                        <input id="id-for-upload-file" className="imgdata" onChange={this.addFile.bind(this)} type="file"/>
                     </form>
                 </div>
 
                 <div>
 
-                    <input type="text" placeholder="Enter Store name" ref={this.storeNameRef}/>
-                    <button onClick={this.setStoreName.bind(this)}>Submit</button>
+                    <input type="text" className="storedata" placeholder="Enter Store name" ref={this.storeNameRef}/>
+                    <button  class="subbtn" onClick={this.setStoreName.bind(this)}>Submit</button>
                 </div>
 
                 <div>
 
-                    <input type="text" placeholder="Enter Slogan for your store" ref={this.sloganNameRef}/>
-                    <button onClick={this.setSloganName.bind(this)}>Submit</button>
+                    <input type="text" className="storedata" placeholder="Enter Slogan for your store" ref={this.sloganNameRef}/>
+                    <button className="subbtn" onClick={this.setSloganName.bind(this)}>Submit</button>
+                </div>
+
                 </div>
 
                 {/* <button onClick={()=>{this.props.data.updateImg(this.state.profileImg)}}>Change Image</button> */}

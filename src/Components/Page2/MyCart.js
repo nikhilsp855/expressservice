@@ -61,7 +61,7 @@ const MyCart = (props) => {
                     </table>
                 </div>
                 <div className="col-auto ms-auto my-2">
-                    <h2>Total Price: ₹{cartTotal}</h2>
+                    <h2>Total Price: {cartTotal}INR</h2>
                 </div>
                 <div className="col-auto">
                     <button

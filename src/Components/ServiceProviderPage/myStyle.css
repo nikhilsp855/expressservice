@@ -187,3 +187,35 @@
     position: sticky;
     top : 0px;
   }
+
+  .updatedata{
+
+    margin-top: 10px;
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      
+  }
+
+  .imgdata{
+
+    width: 253px;
+    margin-bottom: 20px;
+  }
+
+  .storedata{
+
+    margin-top: 5px;
+    margin-right: 10px;
+    background-color:antiquewhite;
+
+  }
+
+  .subbtn{
+
+    background-color: rgb(160, 235, 160);
+    color:black;
+
+  }
