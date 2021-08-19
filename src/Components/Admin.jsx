@@ -22,11 +22,15 @@ export class Admin extends React.Component {
             <div>
                 <SideBar/>
                 <Switch>
-                    <Route exact path='/admin' component={Home} />
+                    <Route exact path='/admin'>
+                        <Home accessToken={this.state.accessToken}/>
+                    </Route>
                     <Route path='/admin/serviceprov'>
                         <ServiceProviders accessToken={this.state.accessToken}/>
                     </Route>
-                    <Route path='/admin/stats' component={Stats} />
+                    <Route path='/admin/stats'>
+                        <Stats accessToken={this.state.accessToken}/>
+                    </Route>
                 </Switch>
             </div>
         )

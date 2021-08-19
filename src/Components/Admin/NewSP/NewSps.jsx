@@ -17,7 +17,7 @@ export default class NewSps extends Component {
 
     async componentDidMount() {
 
-        console.log("this.props.accessToken = ",this.props.accessToken);
+        //console.log("this.props.accessToken = ",this.props.accessToken);
         this.getPendingSPList(this.props.accessToken)
           .then(elements => this.setState({ sps:elements }))
           .catch(e => console.log(e));
@@ -96,6 +96,7 @@ export default class NewSps extends Component {
         
         this.removeSP(this.props.accessToken,item.id);
         this.addSP(this.props.accessToken,item);
+        this.props.rerenderServiceFilter();
     }
 
      onDeny(item) {
@@ -111,12 +112,12 @@ export default class NewSps extends Component {
     render() {
         return (
             <div>
-            <h3 className='card card-header' style={{textAlign:"center"}}>Recently Processed Service Provider</h3>
+            <h3 className='card card-header'>Recently Processed Service Provider</h3>
             {this.state.current.map(current=>(
                 <div className='d-flex accept-deny-list rounded btn-info'>
-                    <p class='accept-deny-list-item'> <b>Customer Name </b> : {current.name}   </p>
-                    <p class='accept-deny-list-item'> <b>Service Requirement:</b>  {current.service}  </p>
-                    <p class='accept-deny-list-item'> <b>Contact :</b>  {current.contact}   </p>
+                    <p class='accept-deny-list-item'> <b>Service Provider Name </b> : {current.name}   </p>
+                    <p class='accept-deny-list-item'> <b>Service :</b>  {current.servname}  </p>
+                    <p class='accept-deny-list-item'> <b>email :</b>  {current.email}   </p>
                 </div>
             ))}
 
@@ -124,10 +125,10 @@ export default class NewSps extends Component {
             <div className='mt-4'>
                 {this.state.sps.map(sp=>(
                     <div className='d-flex accept-deny-list rounded' key={sp.id}>
-                        <p class='accept-deny-list-item'> <b>Customer Name </b> : {sp.name}   </p>
-                        <p class='accept-deny-list-item'> <b>Service Requirement:</b>  {sp.location}  </p>
-                        <p class='accept-deny-list-item'> <b>On Date :</b>  {sp.date}   </p>
-                        <p class='accept-deny-list-item'> <b>Contact :</b>  {sp.contact}   </p>
+                        <p class='accept-deny-list-item'> <b>Service Provider Name :</b> : {sp.name}   </p>
+                        <p class='accept-deny-list-item'> <b>City :</b>  {sp.city}  </p>
+                        <p class='accept-deny-list-item'> <b>Email :</b>  {sp.email}   </p>
+                        <p class='accept-deny-list-item'> <b>Service :</b>  {sp.servname}   </p>
                         <button className='btn btn-success mt-5 '  
                         onClick={() => this.onAccept(sp)}  >Accept </button>
                         <button className='btn btn-danger mt-5'

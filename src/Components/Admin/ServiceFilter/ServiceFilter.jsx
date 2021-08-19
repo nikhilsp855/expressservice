@@ -17,15 +17,7 @@ async function getServiceProvidersList(accessToken){
     
         const data = await res.json();
         console.log("data.SPList = ",data.SPList);
-        /*if(data.status(200)) {
-    
-          alert("Login successfull");
-          console.log("Login successfull")
-        }else if(data.status(202)) {
-    
-          alert("Login unsuccessfull");
-          console.log("Login unsuccessfull")
-        }*/
+        
     
         if(data) {
     
@@ -36,51 +28,37 @@ async function getServiceProvidersList(accessToken){
         return [];
 }
 
-export default function ServiceFilter(props) {
-  const [data, setData] = useState([                             //customer data
-    {"id":"101","name":"Ammar Habib","Username":"Ammar","email":"Ammar@bazinga.com","Contact":"99745"},
-    {"id":"102","name":"Ishwar More","Username":"Ishwar","email":"Ishwar@bazinga.com","Contact":"99745"},
-    {"id":"103","name":"Kshitij Patil","Username":"Kshitij","email":"Kshitij@bazinga.com","Contact":"99745"},
-    {"id":"104","name":"Manish Choudhary","Username":"Manish","email":"Manish@bazinga.com","Contact":"99745"},
-    {"id":"105","name":"Nikhil Patil","Username":"Nikhil","email":"Nikhil@bazinga.com","Contact":"99745"},
+export class ServiceFilter extends React.Component {
 
-  ]);            
-  const [q, setQ] = useState('');
+  constructor(props) {
 
-
-  /*
-  useEffect(() => {
-    fetch('https://swapi.dev/api/people')
-      .then((response) => response.json())
-      .then((json) => setData(json.results));
-  }, []);
-*/
-
-useEffect(async () => {
-  await getServiceProvidersList(props.accessToken)
-    .then((result) => setData(result));
-}, []);
-
-
-
-// Searching by firstname
-  function search(rows) {
-      return rows.filter(row => row.name.toLowerCase().indexOf(q)> -1)
+    super(props);
+    this.state = {
+      data : [],
+      q : 0
+    }
   }
-/*
-  return (
-    <div>
-      <div className='card card-header'>
-        Search:<input className='card card-header' type='text' value={q}
-         onChange={(evt) => setQ(evt.target.value)} style={{width:'20rem',height:'2rem'}}/>
-      </div>
-      <div>
-        <Datatable data={search(data)} />
-      </div>
-    </div>
-  );
-  */
 
+  setData(data) {
+    this.setState({data : data});
+    //console.log("this.state.data = ",this.state.data)
+  }
+
+  async reFetch() {
+
+    await getServiceProvidersList(this.props.accessToken)
+      .then((result) => this.setData(result));
+  }
+
+  
+async componentDidMount() {
+
+  await getServiceProvidersList(this.props.accessToken)
+    .then((result) => this.setData(result));
+}
+
+
+  render() {
   return (
 
     <div class='table-style' >
@@ -94,15 +72,25 @@ useEffect(async () => {
           </tr>
         </thead>
         <tbody className='table-success'>
-          {data.map((row) => (
-            <tr>
-              {row.map((ele) => (
-                <td>{ele}</td>
-              ))}
+          <tr>
+            <th><h3>Name</h3></th>
+            <th><h3>Store Name</h3></th>
+            <th><h3>Email id</h3></th>
+            <th><h3>Service Name</h3></th>
+            <th><h3>City</h3></th>
+          </tr>
+          {this.state.data.map((row) => (
+            <tr key={row._id}>
+                <td>{row.name}</td>
+                <td>{row.storeName}</td>
+                <td>{row.email}</td>
+                <td>{row.servname}</td>
+                <td>{row.city}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
+  }
 }

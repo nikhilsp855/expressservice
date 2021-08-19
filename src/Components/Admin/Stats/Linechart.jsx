@@ -11,7 +11,7 @@ export default class Linechart extends React.Component {
                 'Oct', 'Nov','Dec'],
                 datasets: [{
                 label: 'Monthly services',
-                data: [499,412,532,487,631,362,401,431,455,567,466,427],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
                             backgroundColor: 'rgba(54, 162, 235, 0.5)',
                             pointBackgroundColor:'rgba(255, 206, 86, 0.5)',
                             pointBorderColor:'black',
@@ -20,10 +20,47 @@ export default class Linechart extends React.Component {
                             fill:true,
                         }]
             },
+            dataFetched : 0
         }
     }
 
+    async componentDidMount() {
+
+        await this.getMonthlyServicesList(this.props.accessToken)
+            .then((result) => {
+                this.setState({BarData : result, dataFetched : 1});
+                //console.log("result = ",result);
+            });
+    }
+
+    async getMonthlyServicesList(accessToken) {
+
+        const res = await fetch("http://localhost:4000/admin/stats/getMonthlyServicesList",{
+          method : "GET",
+          headers : {
+            "Authorization":"Bearer "+accessToken,
+            "Content-Type" : "application/json"
+          }
+        });
+    
+        const data = await res.json();
+    
+
+        var tempData = this.state.LineData;
+        if(data) {
+            
+            tempData.datasets[0].data = [data.Jan, data.Feb, data.Mar, data.Apr, data.May, data.Jun, data.Jul, data.Aug, data.Sep, data.Oct, data.Nov, data.Dec];
+            
+            return tempData;
+        
+        }
+        return tempData;
+    }
+
     render() {
+
+        if(this.state.dataFetched === 1){
+
         return (
             <div className = 'chart'>
                 <Line
@@ -57,5 +94,11 @@ export default class Linechart extends React.Component {
 />
             </div>
         )
+        }else {
+
+            return <div className = 'chart'>
+                    <h2>Services provided per Month</h2>
+                </div>
+        }
     }
 }
