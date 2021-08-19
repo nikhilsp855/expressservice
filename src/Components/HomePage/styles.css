@@ -12,10 +12,11 @@
 .hmul {
     list-style-type: none;
     margin-top: 0;
+    margin-bottom: 0;
     padding: 0;
     height: 70px;
     overflow: hidden;
-    background-color: #333;
+    background-color:black;
   }
   
   .hmli {
@@ -90,13 +91,17 @@
   .cards1{
      padding: 50px;
       background-color:ghostwhite;
-      margin-top: 500px;
   }
   .search1{
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      margin-top: 450px;
-  }
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: bisque;
+}
+
   .search2{
     border-radius: 25px;
   border: 5px solid black;
@@ -120,4 +125,19 @@
   }
   .foot{
     margin-top: 10px;
+  }
+
+  .city{
+
+    background-color: ghostwhite;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    border-radius:5px;
+  }
+
+  .label1{
+
+    color: black;
+    font-size: 40px;
   }
