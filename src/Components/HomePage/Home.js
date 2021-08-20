@@ -90,13 +90,14 @@ class Home extends React.Component{
     })
     .then(response=>response.json())
     .then(data=>{
-      console.log(data.providers)
+      console.log("data.providers = ",data.providers)
       let itemList=data.providers;
       const list=itemList.map(item=>{
         return item.name;
       })
       console.log(list)
       this.props.getProviderDetails(data.providers);
+      this.props.setAccessToken(accessToken);
       this.props.history.push("./service")
     });
   }

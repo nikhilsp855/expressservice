@@ -29,7 +29,8 @@ constructor(){
                 {
 
                 }
-            ]
+            ],
+            accessToken : null
     }
 }
 
@@ -51,6 +52,11 @@ customerCartDetails=(customercart)=>{
     this.setState({customercart:customercart})
     console.log(this.state.customercart)
 }
+
+setAccessToken(accessToken) {
+
+    this.setState({accessToken : accessToken});
+}
     render() {
    
 
@@ -60,11 +66,11 @@ customerCartDetails=(customercart)=>{
                     <VerifyOtp loadChangeafterOtp={this.loadChangeafterOtp.bind(this)} getPhoneNumber={this.getPhoneNumber.bind(this)}/>
                 </Route>
                 <Route path= '/' exact >
-                    <Home getProviderDetails={this.getProviderDetails.bind(this)}/>
+                    <Home setAccessToken={this.setAccessToken.bind(this)} getProviderDetails={this.getProviderDetails.bind(this)}/>
                 </Route>
                 <Route path='/serviceprovider' component={ServiceProvider}></Route>
                 <Route path='/service' >
-                    <HomeP details={this.state.details} customerCartDetails={this.customerCartDetails.bind(this)}/>
+                    <HomeP accessToken={this.state.accessToken} details={this.state.details} customerCartDetails={this.customerCartDetails.bind(this)}/>
                 </Route>
                 <Route path='/admin' component={Admin} ></Route>
                 <Route path='/login'>

@@ -12,13 +12,14 @@
     flex-flow: column;
     align-items: center;
     max-width: 1120px;
-    width: 90%;
+    width: 500px;
     margin: 0 auto;
   }
   
   .cards__wrapper {
     position: relative;
     margin: 50px 0 45px;
+    width : 500px;
   }
   
   .cards__items {

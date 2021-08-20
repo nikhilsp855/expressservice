@@ -29,7 +29,7 @@ export class Splogin extends React.Component {
 
   async postData(){
 
-    console.log("PostData called");
+    //console.log("PostData called");
     const {username, password} = this.state.fields;
 
     const res = await fetch("http://localhost:4000/splogin/loginSP",{
@@ -40,7 +40,7 @@ export class Splogin extends React.Component {
       body : JSON.stringify({
         username,password
       })
-    });
+    }).catch((e)=>console.log(e));
 
     const data = await res.json();
     /*if(data.status(200)) {
@@ -53,12 +53,14 @@ export class Splogin extends React.Component {
       console.log("Login unsuccessfull")
     }*/
 
-    if(data) {
+    if(data.accessToken) {
 
       alert("Login successfull");
-      console.log("Login Data : ",data," And accessToken : ",data.accessToken);
+      //console.log("Login Data : ",data," And accessToken : ",data.accessToken);
       this.setState({accessToken : data.accessToken});
       this.setState({route : "/serviceprovider"});
+    }else {
+      alert('Please enter valid credentials')
     }
   }
 

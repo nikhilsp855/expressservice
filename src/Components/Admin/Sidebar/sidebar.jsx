@@ -24,8 +24,8 @@ export default function SideBar() {
             <li><img style={{height:50}} src="/images/logo1.png" alt="logo"/></li>
             {/* Seperator */}
             <li style={{width:2000}}></li>       
-            <li><Link style={{ float:'right' }} className='menu-bars' to='/'>HOME</Link></li>
-            <li><Link style={{ float:'right' }} className='menu-bars' to='/login'>LOGOUT</Link></li>
+            {/*<li><Link style={{ float:'right' }} className='menu-bars' to='/'>HOME</Link></li>*/}
+            <li><Link style={{ float:'right' }} className='menu-bars' to='/'>LOGOUT</Link></li>
           </header>
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
             <ul className='nav-menu-items' onClick={showSidebar}>
