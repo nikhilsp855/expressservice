@@ -1,6 +1,7 @@
 import React from 'react'
 // import manish from './images/manish.jpg'
 import profile from './images/profile.jpg'
+import { Redirect } from "react-router-dom";
 
 export class ServiceHeader extends React.Component {
 
@@ -10,7 +11,8 @@ export class ServiceHeader extends React.Component {
 		this.state = {
 			profileImg: profile,
 			ServiceTitle: 'Name of Your Store',
-			slogan : 'Slogan for your store'
+			slogan : 'Slogan for your store',
+			route : '/serviceprovider'
 		}
 	}
 
@@ -81,15 +83,24 @@ export class ServiceHeader extends React.Component {
         	return data;
     
     	}
-		console.log("helllll");
+		//console.log("helllll");
     	return {storeName : "",slogan : ""};
 	}
 
+	splogoutRef() {
+
+		this.setState({route : '/'});
+	}
+
     render() {
+
+		if(this.state.route === '/serviceprovider') {
+
         return <div> 
             <div className="jumbotron text-center serviceHeader">
             
                 <h2 className='companyName'>Express Service</h2>
+				<h3 className='serviceProviderLogout' onClick={this.splogoutRef.bind(this)}>Logout</h3>
                 <h1 className='sph1'><b>{this.state.ServiceTitle}</b></h1>
 		        <h3 className='sph3'>{this.state.slogan}</h3>
 				
@@ -124,5 +135,8 @@ export class ServiceHeader extends React.Component {
             </div>
 
         </div>
+		}else {
+			return <Redirect to={{pathname:this.state.route}}/>;
+		}
     }
 }

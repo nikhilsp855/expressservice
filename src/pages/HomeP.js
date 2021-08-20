@@ -10,7 +10,7 @@ const HomeP=(props)=> {
         <div>
             <Navbar/>
             
-            <Cards details={props.details} />
+            <Cards accessToken={props.accessToken} details={props.details} />
             <Footer/>
         </div>
     )
