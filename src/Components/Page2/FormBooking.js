@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import {useLocation} from "react-router-dom";
-import './FormBooking.css'
+import './FormBooking.css';
+import {useHistory} from "react-router-dom";
 const FormBooking=()=> {
+    const history = useHistory();
     let location = useLocation();
     const[item,setState]=useState([{}]);
     const[providers,setProvider]=useState();
@@ -49,6 +51,7 @@ const FormBooking=()=> {
     
     const confirmBooking=(e)=>{
         e.preventDefault();
+        
      fetch("http://localhost:4000/confirmbooking",{
       method : "POST",
       headers : {
@@ -66,6 +69,14 @@ const FormBooking=()=> {
             time
         }
       })
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data==="success")
+        {
+        alert("Congratulations!!! Your service is booked successfully!!")
+        history.push("./")
+        }
     })
     }
     return (
