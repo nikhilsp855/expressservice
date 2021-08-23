@@ -29,7 +29,7 @@ export default class NewSps extends Component {
         //console.log("accessToken : ",accessToken);
     
     
-        const res = await fetch("http://localhost:4000/admin/pendingSP",{
+        const res = await fetch("https://expressservicebackend.herokuapp.com/admin/pendingSP",{
           method : "GET",
           headers : {
             "Authorization":"Bearer "+accessToken,
@@ -60,7 +60,7 @@ export default class NewSps extends Component {
 
     async removeSP(accessToken,id) {
 
-        await fetch("http://localhost:4000/admin/pendingSP/removeSP",{
+        await fetch("https://expressservicebackend.herokuapp.com/admin/pendingSP/removeSP",{
                 method : "POST",
                 headers : {
                     "Authorization":"Bearer "+accessToken,
@@ -75,7 +75,7 @@ export default class NewSps extends Component {
     async addSP(accessToken,newUser) {
 
         console.log("newUser at addSubService = ",newUser)
-        await fetch("http://localhost:4000/serviceProviders/addSP",{
+        await fetch("https://expressservicebackend.herokuapp.com/serviceProviders/addSP",{
                 method : "POST",
                 headers : {
                     "Authorization":"Bearer "+accessToken,

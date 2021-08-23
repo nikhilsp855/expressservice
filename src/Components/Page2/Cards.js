@@ -17,7 +17,7 @@ class Cards extends React.Component {
 	
     //console.log("profilePic = ",profilePic);
     //console.log("accessToken = ",accessToken);
-		const res = await fetch("http://localhost:4000/serviceproviders/updateDetails/retrieveSPImage",{
+		const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/retrieveSPImage",{
 		  method : "POST",
 		  headers : {
 			"Authorization":"Bearer "+accessToken,

@@ -77,7 +77,7 @@ class Home extends React.Component{
 
   async postData(accessToken){
     console.log("PostData called");
-    const res = await fetch("http://localhost:4000/getserviceproviders",{
+    const res = await fetch("https://expressservicebackend.herokuapp.com/getserviceproviders",{
       method : "POST",
       headers : {
         "Authorization":"Bearer "+accessToken,

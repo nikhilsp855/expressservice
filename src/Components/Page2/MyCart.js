@@ -21,7 +21,7 @@ const MyCart = (props) => {
     return (
         <section className="py-4 container">
 
-            <div className="row justify-content-center">
+            <div className="row justify-content-center ">
 
                 <div className="col-12">
                     <h5>Cart ({totalUniqueItems}) total Items: ({totalItems})</h5>

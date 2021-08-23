@@ -24,7 +24,7 @@ export class CustomerList extends React.Component {
     console.log("accessToken : ",accessToken);
 
 
-    const res = await fetch("http://localhost:4000/serviceproviders",{
+    const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders",{
       method : "POST",
       headers : {
         "Authorization":"Bearer "+accessToken

@@ -52,7 +52,7 @@ const FormBooking=()=> {
     const confirmBooking=(e)=>{
         e.preventDefault();
         
-     fetch("http://localhost:4000/confirmbooking",{
+     fetch("https://expressservicebackend.herokuapp.com/confirmbooking",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

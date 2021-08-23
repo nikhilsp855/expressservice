@@ -7,7 +7,7 @@ require('isomorphic-fetch');
 
 async function getServiceProvidersList(accessToken){
 
-  const res = await fetch("http://localhost:4000/serviceProviders/getSPList",{
+  const res = await fetch("https://expressservicebackend.herokuapp.com/serviceProviders/getSPList",{
           method : "GET",
           headers : {
             "Authorization":"Bearer "+accessToken,

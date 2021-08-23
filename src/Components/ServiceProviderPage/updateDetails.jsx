@@ -30,7 +30,7 @@ export class updateDetails extends Component {
 
    /* async uploadImage(reader) {
 
-        await fetch("http://localhost:4000/serviceproviders/updateDetails/uploadImage",{
+        await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/uploadImage",{
                 method : "POST",
                 headers : {
                     "Authorization":"Bearer "+this.state.accessToken,
@@ -84,7 +84,7 @@ export class updateDetails extends Component {
         //formData.append('description', 'some value user types');
         //console.log("event.target.files[0] = ",event.target.files[0]);
     
-        fetch("http://localhost:4000/serviceproviders/updateDetails/uploadImage", {
+        fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/uploadImage", {
             method: 'POST',
             headers: {
                 "Authorization":"Bearer "+this.state.accessToken
@@ -102,7 +102,7 @@ export class updateDetails extends Component {
     
     setStoreName() {
 
-        fetch("http://localhost:4000/serviceproviders/updateDetails/setStoreName", {
+        fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/setStoreName", {
             method : 'POST',
             headers : {
                 "Authorization":"Bearer "+this.state.accessToken,
@@ -119,7 +119,7 @@ export class updateDetails extends Component {
     setSloganName() {
 
         //console.log("this.sloganNameRef.current.value = ",this.sloganNameRef.current.value);
-        fetch("http://localhost:4000/serviceproviders/updateDetails/setSloganName", {
+        fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/setSloganName", {
             method : 'POST',
             headers : {
                 "Authorization":"Bearer "+this.state.accessToken,

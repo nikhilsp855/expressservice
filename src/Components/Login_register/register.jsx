@@ -27,7 +27,7 @@ export class Register extends React.Component {
 
     console.log("PostData called");
     const {username, password} = this.state.fields;
-    const res = await fetch("http://localhost:4000/login/register",{
+    const res = await fetch("https://expressservicebackend.herokuapp.com/login/register",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

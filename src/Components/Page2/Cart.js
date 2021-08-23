@@ -27,6 +27,7 @@ const Cart = (props) => {
     const {
         totalUniqueItems,
     } = useCart();
+    
     return (
         <>
             <button className="addcartbtn" onClick={handleClick}><i class="fas fa-shopping-cart"></i>

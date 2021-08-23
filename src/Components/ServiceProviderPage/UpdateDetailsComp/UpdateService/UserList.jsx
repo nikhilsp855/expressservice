@@ -5,7 +5,7 @@ import { GlobalContext } from '../Context/GlobalState'
 
 async function getSubServices(accessToken) {
 
-    const res = await fetch("http://localhost:4000/serviceproviders/updateDetails",{
+    const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails",{
             method : "GET",
             headers : {
                 "Authorization":"Bearer "+accessToken
@@ -41,7 +41,7 @@ export const UserList = (props) => {
 
     async function removeUser(accessToken,id) {
 
-        await fetch("http://localhost:4000/serviceproviders/updateDetails/deleteSubService",{
+        await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/deleteSubService",{
                 method : "POST",
                 headers : {
                     "Authorization":"Bearer "+accessToken,

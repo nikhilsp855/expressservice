@@ -29,7 +29,7 @@ export class Spregister extends React.Component {
 
     console.log("PostData called");
     const {username, password, email, servname,city} = this.state.fields;
-    const res = await fetch("http://localhost:4000/splogin/registerSP",{
+    const res = await fetch("https://expressservicebackend.herokuapp.com/splogin/registerSP",{
       method : "POST",
       headers : {
         "Content-Type" : "application/json"

@@ -6,7 +6,7 @@ import { Form,FormGroup,Label,Input,Button } from 'reactstrap'
 async function editSubService(accessToken,editedField,id) {
 
     console.log("newUser at addSubService = ",editedField)
-    await fetch("http://localhost:4000/serviceproviders/updateDetails/editSubService",{
+    await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/editSubService",{
             method : "POST",
             headers : {
                 "Authorization":"Bearer "+accessToken,
@@ -21,7 +21,7 @@ async function editSubService(accessToken,editedField,id) {
 
 async function getSubServices(accessToken) {
 
-    const res = await fetch("http://localhost:4000/serviceproviders/updateDetails",{
+    const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails",{
             method : "GET",
             headers : {
                 "Authorization":"Bearer "+accessToken

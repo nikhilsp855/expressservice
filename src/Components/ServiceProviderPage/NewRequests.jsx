@@ -27,7 +27,7 @@ export default class NewRequests extends Component {
         console.log("accessToken : ",accessToken);
     
     
-        const res = await fetch("http://localhost:4000/serviceproviders/pendingCustomer",{
+        const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/pendingCustomer",{
           method : "GET",
           headers : {
             "Authorization":"Bearer "+accessToken
@@ -56,7 +56,7 @@ export default class NewRequests extends Component {
 
     async removeCustomer(accessToken,id) {
 
-        await fetch("http://localhost:4000/serviceproviders/pendingCustomer/removeCustomer",{
+        await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/pendingCustomer/removeCustomer",{
                 method : "POST",
                 headers : {
                     "Authorization":"Bearer "+accessToken,
@@ -71,7 +71,7 @@ export default class NewRequests extends Component {
     async addCustomer(accessToken,newUser) {
 
         console.log("newUser at addSubService = ",newUser)
-        await fetch("http://localhost:4000/serviceproviders/addCustomer",{
+        await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/addCustomer",{
                 method : "POST",
                 headers : {
                     "Authorization":"Bearer "+accessToken,

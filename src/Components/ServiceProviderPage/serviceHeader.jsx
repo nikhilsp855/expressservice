@@ -45,7 +45,7 @@ export class ServiceHeader extends React.Component {
 
 	async getProfileImage(accessToken){
 	
-		const res = await fetch("http://localhost:4000/serviceproviders/updateDetails/retrieveImage",{
+		const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/retrieveImage",{
 		  method : "GET",
 		  headers : {
 			"Authorization":"Bearer "+accessToken
@@ -66,7 +66,7 @@ export class ServiceHeader extends React.Component {
 
 	async getStoreNameAndSlogan(accessToken){
 	
-		const res = await fetch("http://localhost:4000/serviceproviders/updateDetails/getStoreNameAndSlogan",{
+		const res = await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/getStoreNameAndSlogan",{
 		  method : "GET",
 		  headers : {
 			"Authorization":"Bearer "+accessToken,

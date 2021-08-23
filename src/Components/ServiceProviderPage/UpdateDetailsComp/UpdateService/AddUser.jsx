@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid'
 async function addSubService(accessToken,newUser) {
 
     console.log("newUser at addSubService = ",newUser)
-    await fetch("http://localhost:4000/serviceproviders/updateDetails/addSubService",{
+    await fetch("https://expressservicebackend.herokuapp.com/serviceproviders/updateDetails/addSubService",{
             method : "POST",
             headers : {
                 "Authorization":"Bearer "+accessToken,
