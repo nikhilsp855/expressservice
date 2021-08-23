@@ -50,7 +50,7 @@ export default class Barchart extends React.Component {
 
     async getUtilisedServicesList(accessToken) {
 
-        const res = await fetch("http://localhost:4000/admin/stats/getUtilisedServicesList",{
+        const res = await fetch("https://expressservicebackend.herokuapp.com/admin/stats/getUtilisedServicesList",{
           method : "GET",
           headers : {
             "Authorization":"Bearer "+accessToken,

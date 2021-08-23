@@ -35,7 +35,7 @@ export default class Linechart extends React.Component {
 
     async getMonthlyServicesList(accessToken) {
 
-        const res = await fetch("http://localhost:4000/admin/stats/getMonthlyServicesList",{
+        const res = await fetch("https://expressservicebackend.herokuapp.com/admin/stats/getMonthlyServicesList",{
           method : "GET",
           headers : {
             "Authorization":"Bearer "+accessToken,
