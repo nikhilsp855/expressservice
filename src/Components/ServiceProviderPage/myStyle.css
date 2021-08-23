@@ -214,9 +214,11 @@
 
   .storedata{
 
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: 10px;
-    background-color:antiquewhite;
+    background-color:beige;
+    height: 35px;
+    border-radius: 5px;
 
   }
 

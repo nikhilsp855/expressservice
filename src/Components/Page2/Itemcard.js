@@ -6,7 +6,7 @@ const Itemcard = (props) => {
     return (
         <div className="col-11 col-md-6 col-lg-3 mx-0 mb-4">
             <div class="card p-0 overflow-hidden h-100 shadow">
-                <img src='images/washbasin.jpg' class="card=img-top img-fluid"/>
+                <img src='images/cart1.jpg' class="card=img-top img-fluid"/>
                 <div class="card-body text-center">
                     <h5 class="card-title">{props.title}</h5>
                     <h5 class="card-title">INR {props.price}</h5>

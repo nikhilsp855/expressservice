@@ -1,5 +1,5 @@
 import React from 'react';
-import './Cards.css';
+import './Demo.scss';
 import CardItem from './CardItem';
 import { Details } from '@material-ui/icons';
 
@@ -64,12 +64,11 @@ class Cards extends React.Component {
     console.log("this.state.picsList = ",this.state.picsList);
     
   return (
-    <div className='cards'>
-      <h1>Check out these service providers</h1>
+    <>
+      <h1 className="top">Check out these service providers</h1>
+      <div className="wrapper">
       {this.props.details.map((item, index) => (
-        <div className='cards__container' key={index}>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
+        
             <CardItem
               src={this.state.picsList[index]}
               text={item.storeName}
@@ -77,12 +76,11 @@ class Cards extends React.Component {
               path='/booking'
               details={this.props.details}
             />
-          </ul>
-        </div>
-      </div>
+        
     ))}
       
     </div>
+    </>
   );
      
 }

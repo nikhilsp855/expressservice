@@ -78,7 +78,7 @@ export class CustomerList extends React.Component {
                 <div className="row">
 
                     <div className="col-md-4">
-                        <img src={this.state.customers[i].pic} alt="customer pic" class='customerImage'/>
+                        <img src="images/profile.jpg" alt="customer pic" class='customerImage'/>
                     </div>
                     <div className="col-md-7">
                         <h4 className='sph4'>{this.state.customers[i].name}</h4>

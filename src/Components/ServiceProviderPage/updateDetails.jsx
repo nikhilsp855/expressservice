@@ -161,13 +161,13 @@ export class updateDetails extends Component {
                 <div>
 
                     <input type="text" className="storedata" placeholder="Enter Store name" ref={this.storeNameRef}/>
-                    <button  class="subbtn" onClick={this.setStoreName.bind(this)}>Submit</button>
+                    <button  class="btn btn-warning" onClick={this.setStoreName.bind(this)}>Submit</button>
                 </div>
 
                 <div>
 
                     <input type="text" className="storedata" placeholder="Enter Slogan for your store" ref={this.sloganNameRef}/>
-                    <button className="subbtn" onClick={this.setSloganName.bind(this)}>Submit</button>
+                    <button className="btn btn-info" onClick={this.setSloganName.bind(this)}>Submit</button>
                 </div>
 
                 </div>
